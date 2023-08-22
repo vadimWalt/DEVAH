@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    // constant set for the role, in the form of an enum in the migration table of user
+    const ROLE_TEACHER = 'teacher';
+    const ROLE_STUDENT = 'student';
+
     /**
      * The attributes that are mass assignable.
      *
