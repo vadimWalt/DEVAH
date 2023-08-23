@@ -41,7 +41,7 @@
         
         <div class="devah">
             <a href="#" class="text-white">
-                <i class="fa-solid fa-school fa-2xl" style="color: #ffccff;"></i>            </a>
+                <i class="fa-solid fa-school fa-2xl" style="color: #ffffcc;"></i>            </a>
             DEVAH ACADEMY</div>
         <div class="hidden md:flex space-x-4">
           <a href="#" class="text-white">Home</a>
