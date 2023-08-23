@@ -16,6 +16,10 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/test', function () {
+    return view('test');
+});
+
 
 // Show register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
