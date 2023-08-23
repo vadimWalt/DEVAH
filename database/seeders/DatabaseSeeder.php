@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use App\Models\Course;
+use App\Models\ChatRoom;
+use App\Models\ChatMessage;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,11 +16,28 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        // Create a teacher
+        $teacher = User::factory()->create(['role' => 'teacher']);
+
+        // Create 9 students
+        $students = User::factory(9)->create(['role' => 'student']);
+
+        // Create a course owned by the teacher
+        $course = Course::factory()->create(['teacher_id' => $teacher->id]);
+
+        // Link students to the course
+        $course->users()->attach($students);
+
+        // Create a chatroom and a chat message for each student
+
+        $chatroom = ChatRoom::factory()->create(['course_id' => $course->id]);
+
+        foreach ($students as $student) {
+            ChatMessage::factory()->create([
+                'chat_rooms_id' => $chatroom->id,
+                'user_id' => $student->id,
+            ]);
+        }
     }
 }
