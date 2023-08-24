@@ -17,7 +17,8 @@ class CourseController extends Controller
         // Process the response
         $data = $response->json(); // Convert the JSON response to an array
         $courses = $data;
-        return view('test')->with($courses);
+        // Pass the courses data to the 'courses.index' view
+        return view('courses.index')->with('courses', $courses);
     }
 }
 

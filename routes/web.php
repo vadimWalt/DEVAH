@@ -20,11 +20,30 @@ use App\Models\ChatMessage;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/test', [CourseController::class, 'index']);
 
-Route::get('/courses', function () {
-    return view('courses.index');
-});
+// List all courses
+Route::get('/courses', [CourseController::class, 'index']);
+
+// Single course
+Route::get('/courses/{course}', [CourseController::class, 'show']);
+
+// Create course form
+Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth'); 
+
+// Store new course
+Route::post('/courses', [CourseController::class, 'store'])->middleware('auth');
+
+// Edit course form
+Route::get('/courses/{course}/edit', [CourseController::class, 'edit'])->middleware('auth');
+
+// Update course
+Route::put('/courses/{course}', [CourseController::class, 'update'])->middleware('auth');
+
+// Delete course
+Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->middleware('auth');
+
+// Manage courses
+Route::get('/courses/manage', [CourseController::class, 'manage'])->middleware('auth');
 
 // Show register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
