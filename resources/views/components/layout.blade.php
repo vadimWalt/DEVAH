@@ -32,7 +32,7 @@
     <title>DEVAH | learning Platform</title>
 </head>
 
-<body class="mb-48">
+<body>
 
     <header>
         <nav class="bg-gray-800 p-4">
@@ -64,7 +64,7 @@
         </nav>
     </header>
 
-    <main>
+    <main class="mb-24">
         {{ $slot }}
     </main>
 
