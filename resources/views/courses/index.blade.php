@@ -6,7 +6,7 @@
     @endif
     
     @foreach ($courses as $course)
-    {{-- :course passes the current course data to the component --}}
+    {{-- :course passes the current course data to the component --}} 
     {{-- that way, course-card can display the data dynamically --}}
         <x-course-card :course="$course" />
     @endforeach
