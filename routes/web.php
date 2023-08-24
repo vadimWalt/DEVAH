@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\ChatMessageController;
 use App\Http\Controllers\CourseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Models\ChatMessage;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,3 +38,7 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 
 // Log user in
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+
+// Store new chatMessage
+Route::post('/chatMessage', [ChatMessageController::class, 'store'])->middleware('auth');

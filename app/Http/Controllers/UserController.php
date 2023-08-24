@@ -21,10 +21,16 @@ class UserController extends Controller
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => ['required', Password::min(6)->mixedCase()->numbers()->symbols()]
+            'password' => ['required', Password::min(6)->mixedCase()->numbers()->symbols()],
             // one other cool method is uncompromised(x)
             // it checks if the password has been found less then x times in data leaks
             //'password' => 'required|confirmed|min:6'  | = or
+            'role' => 'required',
+            'profile_picture' => [],
+            'city' => 'required',
+            'zip_code' => 'required',
+            'street' => 'required',
+            'country' => 'required',
         ]);
 
         // hash the password because we're good devs
@@ -39,7 +45,7 @@ class UserController extends Controller
         auth()->login($user);
 
         // when user is created and logged in, we'll show them the homepage so they can start navigating the website
-        return redirect('/')->with('message', 'User created and logged in !');
+        return redirect('/manage')->with('message', 'User created and logged in !');
     }
 
     // Logout user
