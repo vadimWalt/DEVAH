@@ -51,11 +51,36 @@
                     <a href="#" class="text-white">Contact</a>
                     <a href="/courses" class="text-white">Courses</a>
                 </div>
+                @auth {{-- if we're logged in, show this content --}}
+                    <ul class="flex space-x-6 mr-6 text-lg">
+                        <li>
+                            <span class="font-bold uppercase">
+                                {{-- to access to logged user name, we need to use the auth() helper --}}
+                                Welcome {{ auth()->user()->name }}
+                            </span>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:text-laravel">
+                                <i class="fa-solid fa-gear"></i> Manage Listings(route not ready)
+                            </a>
+                        </li>
+                        <li>
+                            <form class="inline" method="POST" action="/logout">
+                                @csrf
+                                <button>
+                                    <i class="fa-solid fa-door-closed"></i> Logout
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                @else
+                    {{-- if we're not logged in, show that content instead --}}
 
-                <div class="hidden md:flex space-x-4">
-                    <a href="/register" class="text-white">Register</a>
-                    <a href="/login" class="text-white">Login</a>
-                </div>
+                    <div class="hidden md:flex space-x-4">
+                        <a href="/register" class="text-white">Register</a>
+                        <a href="/login" class="text-white">Login</a>
+                    </div>
+                @endauth
                 <div class="md:hidden">
                     <button class="text-white">
                         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
@@ -73,39 +98,17 @@
         {{ $slot }}
     </main>
 
-   {{-- <footer
-        class="fixed bottom-0 text-wrap left-0 w-full flex items-center justify-start font-bold bg-gray-800 text-white h-24 mt-24 opacity-90 md:justify-center">
-        <p class="ml-2">Copyright &copy; 2022, All Rights reserved</p>
-
-        <a href="/" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">enroll to a course</a>
-    </footer>--}}
-
-
-
-    <footer class="w-full flex flex-col items-center justify-start font-bold bg-gray-800 text-white h-24 mt-24 opacity-90 md:justify-center md:flex-row md:space-x-4">
+    <footer
+        class="w-full flex flex-col items-center justify-start font-bold bg-gray-800 text-white h-24 mt-24 opacity-90 md:justify-center md:flex-row md:space-x-4">
         <ul>
-           <li>Copyright &copy; 2022, All Rights reserved</li>
-           <li>
-            <a href="/">enroll to a course</a>
-           </li>
+            <li>Copyright &copy; 2022, All Rights reserved</li>
+            <li>
+                <a href="/">enroll to a course</a>
+            </li>
         </ul>
-       
+
     </footer>
 
-
-    {{--<footer class="fixed bottom-0 left-0 w-full flex flex-col items-center justify-start font-bold bg-gray-800 text-white h-24 mt-24 opacity-90 md:justify-center md:flex-row md:space-x-4">
-        <ul>
-           <li class="ml-2 mb-2 md:mb-0">Copyright &copy; 2022, All Rights reserved</li>
-           <li>
-            <a href="/" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">enroll to a course</a>
-           </li>
-
-        </ul>
-        {{--<p class="ml-2 mb-2 md:mb-0"></p>
-       
-        <a href="/" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">enroll to a course</a>
-    </footer>--}}
-        
 </body>
 
 </html>
