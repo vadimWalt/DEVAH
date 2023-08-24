@@ -23,7 +23,7 @@
             theme: {
                 extend: {
                     colors: {
-                        laravel: "#2563eb",
+                        laravel: "#000013",
                     },
                 },
             },
@@ -41,7 +41,7 @@
         
         <div class="devah">
             <a href="#" class="text-white">
-                <i class="fa-solid fa-school fa-2xl" style="color: #ffccff;"></i>            </a>
+                <i class="fa-solid fa-school fa-2xl" style="color: #f0f4f3;"></i>            </a>
             DEVAH ACADEMY</div>
         <div class="hidden md:flex space-x-4">
           <a href="#" class="text-white">Home</a>
@@ -64,13 +64,12 @@
     <main>
         {{ $slot }}
     </main>
+    <footer class="absolute bottom-0 w-full gap-0.5 flex items-center justify-start font-bold bg-gray-800 p-4 text-white h-24 mt-24 opacity-90">
+        <p class="ml-2 flex flex-wrap text-sm">Copyright &copy; 2022, All Rights reserved</p>
     
-    <footer
-        class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-24 mt-24 opacity-90 md:justify-center">
-        <p class="ml-2">Copyright &copy; 2022, All Rights reserved</p>
-
-        <a href="/" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">enroll to a course</a>
+        <a href="/" class="absolute top-1/3 right-5 bg-black text-sm text-white py-2 px-5">enroll to a course</a>
     </footer>
+    
 </body>
 
 </html>
