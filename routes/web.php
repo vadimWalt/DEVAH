@@ -22,6 +22,9 @@ Route::get('/', function () {
 });
 Route::get('/test', [CourseController::class, 'index']);
 
+Route::get('/courses', function () {
+    return view('courses.index');
+});
 
 // Show register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');

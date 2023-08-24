@@ -49,7 +49,7 @@
                     <a href="#" class="text-white">About</a>
                     <a href="#" class="text-white">Services</a>
                     <a href="#" class="text-white">Contact</a>
-                    <a href="#" class="text-white">Courses</a>
+                    <a href="/courses" class="text-white">Courses</a>
                 </div>
                 <div class="md:hidden">
                     <button class="text-white">
@@ -64,7 +64,7 @@
         </nav>
     </header>
 
-    <main class="mb-24">
+    <main class="mb-24 mt-0">
         {{ $slot }}
     </main>
 
