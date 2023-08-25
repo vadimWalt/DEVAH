@@ -41,8 +41,8 @@
 
                 <div class="devah">
                     <a href="#" class="text-white">
-                        <i class="fa-solid fa-school fa-2xl" style="color: red;"></i> </a>
-                    DEVAH ACADEMY
+                        <i class="fa-solid fa-school fa-2xl" style="color: red;"></i>DEVAH ACADEMY</a>
+                    
                 </div>
                 <div class="hidden md:flex space-x-4">
                     <a href="/" class="text-white">Home</a>
@@ -99,7 +99,7 @@
         </nav>
     </header>
 
-    <main class="mb-24 mt-0">
+    <main class="min-h-screen mb-24 mt-0">
         {{ $slot }}
     </main>
 

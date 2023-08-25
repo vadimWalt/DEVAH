@@ -23,14 +23,11 @@ class UserController extends Controller
             'name' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['required', 'confirmed', Password::min(6)->mixedCase()->numbers()->symbols()],
-            // one other cool method is uncompromised(x)
-            // it checks if the password has been found less then x times in data leaks
-            //'password' => 'required|confirmed|min:6'  | = or
-            'role' => ['required', Rule::enum('teacher', 'student')],
+            'role' => ['required', Rule::enum(['teacher', 'student'])],
             'profile_picture' => ['required', Rule::imageFile()],
             'city' => 'required',
-            'zip_code' => 'required',
-            'street' => 'required',
+            'zip_code' => ['required', 'regex:/^[0-9]{4}$/'],
+            'street' => ['required', 'regex:/^[0-9]{2}$/'],
             'country' => 'required',
         ]);
         // make sure the image is here before saving it
@@ -112,8 +109,8 @@ class UserController extends Controller
             'role' => ['required'],
             'profile_picture' => 'required',
             'city' => 'required',
-            'zip_code' => ['required', Rule::min(4)->numbers()],
-            'street' => ['required', Rule::min(2)->numbers()],
+            'zip_code' => ['required', 'regex:/^[0-9]{4}$/'],
+            'street' => ['required', 'regex:/^[0-9]{2}$/'],
             'country' => 'required',
         ]);
 

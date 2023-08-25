@@ -9,8 +9,9 @@ use Illuminate\Support\Facades\Http;
 class CourseController extends Controller
 {
     //
-    public function test()
+    public function index()
     {
-        return view('test');
+        $courses = 0;
+        return view('courses.index')->with('courses', $courses);
     }
 }

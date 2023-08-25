@@ -4,7 +4,7 @@
             <h2 class="text-2xl font-bold uppercase mb-1">
                 Register
             </h2>
-            <p class="mb-4">Create an account to post jobs</p>
+            <p class="mb-4">Create an account to make Courses as a Teacher or enroll to a course as a Student</p>
         </header>
 
         <form action="/users" method="POST" enctype="multipart/form-data">

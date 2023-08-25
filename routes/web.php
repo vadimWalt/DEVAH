@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\ChatMessageController;
-use App\Http\Controllers\CourseController;
 use App\Http\Controllers\QuizzController;
+use App\Models\ChatMessage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Models\ChatMessage;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ChatMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,11 +22,17 @@ use App\Models\ChatMessage;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/test', [CourseController::class, 'test']);
+// Route::get('/test', [CourseController::class, 'test']);
 
-Route::get('/courses', function () {
-    return view('courses.index');
-});
+Route::get('/courses', [CourseController::class, 'index']);
+
+
+/*
+|--------------------------------------------------------------------------
+|                       HANDLING USERS
+|--------------------------------------------------------------------------
+*/
+
 
 // Show register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
@@ -52,17 +59,15 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 // Log user in
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
-// Store new chatMessage
-Route::post('/chatMessage', [ChatMessageController::class, 'store'])->middleware('auth');
+
+
 
 
 /*
 |--------------------------------------------------------------------------
-|                              QUIZZ ROUTE
+|                       HANDLING MESSAGES
 |--------------------------------------------------------------------------
 */
-
-
-Route::get("/quiz",[QuizzController::class,"index"]);
-Route::get("/quiz/display", [QuizzController::class, "displayQuizz"]);
-Route::post("/quiz/results",[QuizzController::class,"displayCorrection"]);
+// Store new chatMessage
+// to post a new message in the chat room
+Route::post('/chatMessage', [ChatMessageController::class, 'store'])->middleware('auth');
