@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuizzController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 /*
@@ -32,3 +33,15 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 
 // Log user in
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
+
+
+/*
+|--------------------------------------------------------------------------
+|                              QUIZZ ROUTE
+|--------------------------------------------------------------------------
+*/
+
+
+Route::get("/quiz",[QuizzController::class,"index"]);
+Route::get("/quiz/display", [QuizzController::class, "displayQuizz"]);
+Route::post("/quiz/results",[QuizzController::class,"displayCorrection"]);
