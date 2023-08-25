@@ -25,7 +25,7 @@
             theme: {
                 extend: {
                     colors: {
-                        laravel: "#2563eb",
+                        laravel: "#000013",
                     },
                 },
             },
@@ -35,7 +35,7 @@
 </head>
 
 <body>
-
+    <x-flash-message />
     <header>
         <nav id="nav" class="bg-gray-800 p-4">
             <div class="container mx-auto flex justify-between items-center">
@@ -43,57 +43,94 @@
 
                 <div class="devah">
                     <a href="#" class="text-white">
-                        <i class="fa-solid fa-school fa-2xl" style="color: #511f46;"></i> </a>
-                    DEVAH ACADEMY
+                        <i class="fa-solid fa-school fa-2xl" style="color: red;"></i>DEVAH ACADEMY</a>
+
                 </div>
                 <div class="md:hidden relative" x-data="{ mobileMenuOpen: false }">
                     <button class="text-white" @click="mobileMenuOpen = !mobileMenuOpen">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                    <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false"
-                        class="absolute top-0 right-2 bg-white w-32 mt-2 py-2 rounded shadow-md">
-                        <a href="#" class="block px-4 py-2 text-gray-800">Home</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800">About</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800">Services</a>
-                        <a href="#" class="block px-4 py-2 text-gray-800">Contact</a>
-                        <a href="/courses" class="block px-4 py-2 text-gray-800">Courses</a>
-                    </div>
+                        <div class="hidden md:flex space-x-4">
+                            <a href="/" class="text-white">Home</a>
+                            <a href="#" class="text-white">About</a>
+                            <a href="#" class="text-white">Services</a>
+                            <a href="#" class="text-white">Contact</a>
+                            <a href="/courses" class="text-white">Courses</a>
+                        </div>
+                        @auth {{-- if we're logged in, show this content --}}
+                            <ul class="hidden md:flex flex-row space-x-6 mr-6 text-lg">
+                                <li>
+                                    <span class="font-bold uppercase">
+                                        {{-- to access to logged user name, we need to use the auth() helper --}}
+                                        Welcome {{ auth()->user()->name }}
+                                    </span>
+                                </li>
+                                <li>
+                                    <a href="/users/{{ auth()->user()->id }}/profile" class="hover:text-laravel">
+                                        <i class="fa-solid fa-gear"></i> Manage Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="hover:text-laravel">
+                                        MyCourses(route not ready)
+                                    </a>
+                                </li>
+                                <li>
+                                    <form class="inline" method="POST" action="/logout">
+                                        @csrf
+                                        <button>
+                                            <i class="fa-solid fa-door-closed"></i> Logout
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        @else
+                            {{-- if we're not logged in, show that content instead --}}
+
+                            <div class="hidden md:flex space-x-4">
+                                <a href="/register" class="text-white">Register</a>
+                                <a href="/login" class="text-white">Login</a>
+                            </div>
+                        @endauth
+                        <div class="md:hidden">
+                            <button class="text-white">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                            </button>
+                            <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false"
+                                class="absolute top-0 right-2 bg-white w-32 mt-2 py-2 rounded shadow-md">
+                                <a href="#" class="block px-4 py-2 text-gray-800">Home</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800">About</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800">Services</a>
+                                <a href="#" class="block px-4 py-2 text-gray-800">Contact</a>
+                                <a href="/courses" class="block px-4 py-2 text-gray-800">Courses</a>
+                            </div>
+                        </div>
                 </div>
-            </div>
         </nav>
     </header>
-    <main class="mb-24 mt-0">
+
+    <main class="min-h-screen mb-24 mt-0">
         {{ $slot }}
     </main>
 
-    <a href="#nav">
-        <button x-show="showScrollButton" @click="scrollToTop"
-            class="fixed bottom-12 right-12 bg-gray-800 text-white p-3 rounded shadow">
-            <i class="fas fa-arrow-up"></i>
-        </button>
-    </a>
-    <footer class="bg-gray-800 text-white">
-        <div class="container mx-auto py-4">
-            <div class="flex flex-col md:flex-row md:justify-between">
-                <p class="mb-2 md:mb-0">Copyright &copy; 2022, All Rights Reserved</p>
-                <div class="flex space-x-4">
-                    <a href="/" class="hover:text-gray-400">Home</a>
-                    <a href="#" class="hover:text-gray-400">About</a>
-                    <a href="#" class="hover:text-gray-400">Services</a>
-                    <a href="#" class="hover:text-gray-400">Contact</a>
-                    <a href="/courses" class="hover:text-gray-400">Courses</a>
-                </div>
-                <a href="/" class="md:hidden bg-black text-white px-4 py-2 rounded hover:bg-gray-700">
-                    Enroll to a Course
-                </a>
-            </div>
-        </div>
-    </footer>
+    <footer
+        class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-gray-800 text-white h-24 mt-24 opacity-90 md:justify-center">
 
+        <div class="container mx-auto py-4">
+
+            <p class="mb-2 md:mb-0">Copyright &copy; 2022, All Rights Reserved</p>
+
+            <a href="/courses/create" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">create a
+                course</a>
+
+
+
+
+        </div>
+
+    </footer>
 </body>
 <script>
     Alpine.data('layout', () => ({

@@ -3,3 +3,32 @@
     text-shadow: 2px 5px 10px;
     
 }
+
+p{
+    color: brown;
+}
+
+ul{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    margin-top: 5x;
+    gap: 20px;
+    height: 100px;
+    font-size: x-small;
+
+}
+ ul li a{
+    font-size: small;
+    border-radius: 20px;
+    padding: 4px 8px 8px 8px ;
+    background-color: black;
+    color: white;
+
+
+}
+ul li{
+    list-style: none;
+    
+}
+

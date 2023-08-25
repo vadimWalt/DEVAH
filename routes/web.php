@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\ChatMessageController;
-use App\Http\Controllers\CourseController;
+use App\Http\Controllers\QuizzController;
+use App\Models\ChatMessage;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Models\ChatMessage;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ChatMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,13 +23,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+/*
+|--------------------------------------------------------------------------
+|                       HANDLING COURSES
+|--------------------------------------------------------------------------
+*/
+
 // List all courses
 Route::get('/courses', [CourseController::class, 'index']);
 
-// Single course
-Route::get('/courses/{course}', [CourseController::class, 'show']);
-
-// Create course form
+// Create new course
 Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth'); 
 
 // Store new course
@@ -45,12 +51,32 @@ Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->middle
 // Manage courses
 Route::get('/courses/manage', [CourseController::class, 'manage'])->middleware('auth');
 
+// Single course
+Route::get('/courses/{course}', [CourseController::class, 'show']);
+
+
+/*
+|--------------------------------------------------------------------------
+|                       HANDLING USERS
+|--------------------------------------------------------------------------
+*/
+
+
 // Show register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 // middleware('guest') checks if we are logged in and prevents 
 
 // Create new user
 Route::post('/users', [UserController::class, 'store']);
+
+// Show edit user form
+Route::get('/users/{id}/profile', [UserController::class, 'edit'])->middleware('auth');
+
+// Update listing
+Route::put('/users/{id}', [UserController::class, 'update'])->middleware('auth');
+
+// Delete listing
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->middleware('auth');
 
 // Log user out
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
@@ -62,5 +88,14 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 
+
+
+
+/*
+|--------------------------------------------------------------------------
+|                       HANDLING MESSAGES
+|--------------------------------------------------------------------------
+*/
 // Store new chatMessage
+// to post a new message in the chat room
 Route::post('/chatMessage', [ChatMessageController::class, 'store'])->middleware('auth');
