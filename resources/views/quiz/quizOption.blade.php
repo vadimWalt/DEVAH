@@ -7,8 +7,8 @@
         <option value="Docker">Docker</option>
     </select><br>
 
-    <label for="limit">Limit:</label>
-    <input type="number" name="limit" id="limit" min="5" max="10"><br>
+    <label for="limit">nb question:</label>
+    <input type="number" name="limit" id="limit" min="5" max="10" value="5"><br>
 
     <label for="difficulty">Difficulty:</label>
     <select name="difficulty" id="difficulty">
