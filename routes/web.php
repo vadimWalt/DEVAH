@@ -45,3 +45,14 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 Route::get("/quiz",[QuizzController::class,"index"]);
 Route::get("/quiz/display", [QuizzController::class, "displayQuizz"]);
 Route::post("/quiz/results",[QuizzController::class,"displayCorrection"]);
+
+/*
+|--------------------------------------------------------------------------
+|                               random pages
+|--------------------------------------------------------------------------
+*/
+
+/**same but different */
+Route::get('/aboutus', function () {
+    return view('aboutus');
+});
