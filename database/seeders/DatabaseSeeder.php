@@ -39,5 +39,18 @@ class DatabaseSeeder extends Seeder
                 'user_id' => $student->id,
             ]);
         }
+        // Create a user named John Doe
+        $user = User::factory()->create([
+            'name' => 'DEVAH',
+            'isAdmin' => '1',
+            'email' => 'admin@devah.lu',
+            'password' => 'devah',
+            'profile_picture' => 'public/images/admin.jpg',
+        ]);
+
+        // Create 2 courses associated with the user
+        Course::factory(2)->create([
+            'teacher_id' => $user->id
+        ]);
     }
 }

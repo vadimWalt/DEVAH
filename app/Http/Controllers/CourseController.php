@@ -11,7 +11,7 @@ class CourseController extends Controller
     //
     public function index()
     {
-        $courses = 0;
+        $courses[] = 0;
         return view('courses.index')->with('courses', $courses);
     }
 }

@@ -11,15 +11,7 @@
             @csrf {{-- don't forget ;) --}}
 
             {{-- HANDLING ERRORS --}}
-            @if ($errors->any())
-                <div class="text-red-500 mb-4">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+
             {{-- user name --}}
             <div class="mb-6">
                 <label for="name" class="inline-block text-lg mb-2">
@@ -28,23 +20,39 @@
                 <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name"
                     value="{{ old('name') }}" placeholder="Minimum 3 chars ..." />
             </div>
-
+            @error('name')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
             {{-- user email --}}
             <div class="mb-6">
                 <label for="email" class="inline-block text-lg mb-2">Email</label>
                 <input type="email" class="border border-gray-200 rounded p-2 w-full" name="email"
                     value="{{ old('email') }}" placeholder="example@domain.smth ..." />
             </div>
-
+            @error('email')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
             {{-- user message --}}
             <div class="mb-6">
+                <label for="subject" class="inline-block text-lg mb-2">
+                    Subject
+                </label>
+                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="subject"
+                    value="{{ old('subject') }}" placeholder="Minimum 3 chars ..." />
+            </div>
+            @error('subject')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
+            <div class="mb-6">
                 <label for="message" class="inline-block text-lg mb-2">
-                    Your message:
+                    Message:
                 </label>
                 <textarea rows="5" class="border border-gray-200 rounded p-2 w-full" name="message" value="{{ old('message') }}"
                     placeholder="Minimum chars 5 ..."></textarea>
             </div>
-
+            @error('message')
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+            @enderror
             {{-- submit button --}}
             <div class="mb-6">
                 <button class="bg-laravel text-white rounded py-2 px-4 hover:bg-black">

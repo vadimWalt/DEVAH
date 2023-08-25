@@ -22,9 +22,30 @@ use App\Http\Controllers\ChatMessageController;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/test', [CourseController::class, 'test']);
 
+// List all courses
 Route::get('/courses', [CourseController::class, 'index']);
+
+// Create course form
+Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth');
+
+// Single course
+Route::get('/courses/{course}', [CourseController::class, 'show']);
+
+// Store new course
+Route::post('/courses', [CourseController::class, 'store'])->middleware('auth');
+
+// Edit course form
+Route::get('/courses/{course}/edit', [CourseController::class, 'edit'])->middleware('auth');
+// Update course
+
+Route::put('/courses/{course}', [CourseController::class, 'update'])->middleware('auth');
+
+// Delete course
+Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->middleware('auth');
+
+// Manage courses
+Route::get('/courses/manage', [CourseController::class, 'manage'])->middleware('auth');
 
 
 /*
@@ -64,8 +85,8 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 |                       CONTACT US FORM AND POST ROUTES
 |--------------------------------------------------------------------------
 */
-Route::get('/contact', 'ContactController@show')->name('contact.show');
-Route::post('/contact', 'ContactController@store')->name('contact.store');
+Route::get('/contact', [ContactController::class, 'show']);
+Route::post('/contact', [ContactController::class, 'store']);
 
 
 
@@ -77,3 +98,15 @@ Route::post('/contact', 'ContactController@store')->name('contact.store');
 // Store new chatMessage
 // to post a new message in the chat room
 Route::post('/chatMessage', [ChatMessageController::class, 'store'])->middleware('auth');
+
+
+/* 
+Naming conventions
+- index = show all listings
+- show = show one listing
+- create = show form to create new listing
+- store = store new listing in the DB (on create form submit)
+- edit = show form to edit listing
+- update = update listing in DB (on edit form submit)
+- destroy = delete listing in DB
+*/

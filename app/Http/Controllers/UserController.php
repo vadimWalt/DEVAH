@@ -23,11 +23,11 @@ class UserController extends Controller
             'name' => ['required', 'min:3'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['required', 'confirmed', Password::min(6)->mixedCase()->numbers()->symbols()],
-            'role' => ['required', Rule::enum(['teacher', 'student'])],
+            'role' => 'required',
             'profile_picture' => ['required', Rule::imageFile()],
             'city' => 'required',
             'zip_code' => ['required', 'regex:/^[0-9]{4}$/'],
-            'street' => ['required', 'regex:/^[0-9]{2}$/'],
+            'street' => ['required', 'regex:/^[0-9]{2,}$/'],
             'country' => 'required',
         ]);
         // make sure the image is here before saving it
@@ -66,7 +66,7 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('message', 'You have logged out');
+        return redirect('/login')->with('message', 'You have logged out');
     }
 
     public function login()

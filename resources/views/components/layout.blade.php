@@ -8,14 +8,15 @@
 
     {{-- icon in the tab to make difference between website --}}
     <link rel="icon" href="images/favicon.ico" />
+
     {{-- cdn for fontawesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{{ asset('styles/style.css') }}"> <!-- Use asset() to generate correct URL -->
-
     {{-- cdn for alpine use for flash message for example --}}
     <script src="//unpkg.com/alpinejs" defer></script>
+
     {{-- tailwind cdn --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -33,44 +34,39 @@
 </head>
 
 <body>
-    <x-flash-message />
+
     <header>
-        <nav class="bg-gray-800 p-4">
+        <nav id="nav" class="bg-gray-800 p-4">
             <div class="container mx-auto flex justify-between items-center">
                 {{-- <div class="text-white text-xl font-semibold" >DEVAH ACADEMY</div>  --}}
 
                 <div class="devah">
-                    <a href="#" class="text-white">
-                        <i class="fa-solid fa-school fa-2xl" style="color: red;"></i>DEVAH ACADEMY</a>
-                    
+                    <a href="/" class="text-white">
+                        <i class="fa-solid fa-school fa-2xl" style="color: red;"></i> DEVAH ACADEMY</a>
                 </div>
-                <div class="hidden md:flex space-x-4">
-                    <a href="/" class="text-white">Home</a>
-                    <a href="#" class="text-white">About</a>
-                    <a href="#" class="text-white">Services</a>
-                    <a href="#" class="text-white">Contact</a>
-                    <a href="/courses" class="text-white">Courses</a>
+                <div class="hidden md:flex space-x-4 ">
+                    <a href="/" class="text-white hover:text-gray-400">Home</a>
+                    <a href="/about" class="text-white hover:text-gray-400">About</a>
+                    <a href="/services" class="text-white hover:text-gray-400">Services</a>
+                    <a href="/contact" class="text-white hover:text-gray-400">Contact</a>
+                    <a href="/courses" class="text-white hover:text-gray-400">Courses</a>
                 </div>
                 @auth {{-- if we're logged in, show this content --}}
-                    <ul class="hidden md:flex flex-row space-x-6 mr-6 text-lg">
-                        <li>
-                            <span class="font-bold uppercase">
-                                {{-- to access to logged user name, we need to use the auth() helper --}}
-                                Welcome {{ auth()->user()->name }}
-                            </span>
-                        </li>
-                        <li>
-                            <a href="/users/{{ auth()->user()->id }}/profile" class="hover:text-laravel">
-                                <i class="fa-solid fa-gear"></i> Manage Profile
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="hover:text-laravel">
+                    <ul class="hidden md:flex space-x-4 flex-row items-center">
+                        <li class="text-white flex">Welcome, <span class="font-bold uppercase">
+                                {{-- to access to logged user name, we need to use the auth() helper --}}<a href="/users/{{ auth()->user()->id }}/profile"
+                                    class="hover:text-gray-400"> 
+                                    {{-- <img class="stroke-2" src="/{{ auth()->user()->proflie_picture }}"
+                                        alt="User Picture"> --}} {{ auth()->user()->name }}
+                                    <i class="fa-solid fa-gear"></i>
+                                </a>
+                            </span></li>
+                        <li class="text-white"></li>
+                        <li class="text-white"><a href="/mycourses" class="hover:text-gray-400">
                                 MyCourses(route not ready)
-                            </a>
-                        </li>
-                        <li>
-                            <form class="inline" method="POST" action="/logout">
+                            </a></li>
+                        <li class="text-white">
+                            <form class="inline hover:text-gray-400" method="POST" action="/logout">
                                 @csrf
                                 <button>
                                     <i class="fa-solid fa-door-closed"></i> Logout
@@ -80,7 +76,6 @@
                     </ul>
                 @else
                     {{-- if we're not logged in, show that content instead --}}
-
                     <div class="hidden md:flex space-x-4">
                         <a href="/register" class="text-white">Register</a>
                         <a href="/login" class="text-white">Login</a>
@@ -88,32 +83,43 @@
                 @endauth
                 <div class="md:hidden">
                     <button class="text-white">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
+                        <div class="md:hidden relative" x-data="{ mobileMenuOpen: false }">
+                            <button class="text-white" @click="mobileMenuOpen = !mobileMenuOpen">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                            </button>
+                            <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false"
+                                class="absolute top-0 right-2 bg-white w-32 mt-2 py-2 rounded shadow-md">
+                                <a href="/" class="block px-4 py-2 text-gray-800">Home</a>
+                                <a href="/about" class="block px-4 py-2 text-gray-800">About</a>
+                                <a href="/services" class="block px-4 py-2 text-gray-800">Services</a>
+                                <a href="/contact" class="block px-4 py-2 text-gray-800">Contact</a>
+                                <a href="/courses" class="block px-4 py-2 text-gray-800">Courses</a>
+                            </div>
+                        </div>
                 </div>
-            </div>
         </nav>
     </header>
-
-    <main class="min-h-screen mb-24 mt-0">
+    <x-flash-message />
+    <main class="min-h-screen mb-0 mt-0">
         {{ $slot }}
     </main>
 
     <footer
-        class="w-full flex flex-col items-center justify-start font-bold bg-gray-800 text-white h-24 mt-24 opacity-90 md:justify-center md:flex-row md:space-x-4">
+        class="w-full flex flex-col items-center justify-start font-bold bg-gray-800 text-white h-24 mt-0 opacity-90 md:justify-center md:flex-row md:space-x-4">
         <ul>
-            <li>Copyright &copy; 2022, All Rights reserved</li>
             <li>
                 <a href="/">enroll to a course</a>
             </li>
+            <li>Copyright &copy; 2022, All Rights reserved</li>
         </ul>
-
+        <a href="#nav" class="fixed bottom-12 right-12 bg-gray-500 text-white p-6 rounded-full shadow">
+            <i class="fas fa-arrow-up"></i>
+        </a>
     </footer>
-
 </body>
 
 </html>

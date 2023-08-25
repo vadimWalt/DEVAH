@@ -29,9 +29,7 @@
             </div>
             {{-- user name --}}
             <div class="mb-6">
-                <label for="name" class="inline-block text-lg mb-2">
-                    Name
-                </label>
+                <label for="name" class="inline-block text-lg mb-2">Name:</label>
                 <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name"
                     value="{{ old('name') }}" />
                 @error('name')
@@ -41,7 +39,7 @@
 
             {{-- user email --}}
             <div class="mb-6">
-                <label for="email" class="inline-block text-lg mb-2">Email</label>
+                <label for="email" class="inline-block text-lg mb-2">Email:</label>
                 <input type="email" class="border border-gray-200 rounded p-2 w-full" name="email"
                     value="{{ old('email') }}" />
                 @error('email')
@@ -50,7 +48,7 @@
             </div>
             {{-- pfp --}}
             <div class="mb-6">
-                <label for="profile_picture" class="inline-block text-lg mb-2">Profile Picture</label>
+                <label for="profile_picture" class="inline-block text-lg mb-2">Profile Picture:</label>
                 <input type="file" class="border border-gray-200 rounded p-2 w-full" name="profile_picture"
                     value="{{ old('profile_picture') }}" />
                 @error('profile_picture')
@@ -59,7 +57,7 @@
             </div>
             {{-- address fields --}}
             <div class="mb-6">
-                <label for="city" class="inline-block text-lg mb-2">City</label>
+                <label for="city" class="inline-block text-lg mb-2">City:</label>
                 <input type="text" class="border border-gray-200 rounded p-2 w-full" name="city"
                     value="{{ old('city') }}" />
                 @error('city')
@@ -67,7 +65,7 @@
                 @enderror
             </div>
             <div class="mb-6">
-                <label for="zip_code" class="inline-block text-lg mb-2">zip Code</label>
+                <label for="zip_code" class="inline-block text-lg mb-2">Zip Code:</label>
                 <input type="text" class="border border-gray-200 rounded p-2 w-full" name="zip_code"
                     value="{{ old('zip_code') }}" />
                 @error('zip_code')
@@ -75,7 +73,7 @@
                 @enderror
             </div>
             <div class="mb-6">
-                <label for="street" class="inline-block text-lg mb-2">Street</label>
+                <label for="street" class="inline-block text-lg mb-2">Street:</label>
                 <input type="text" class="border border-gray-200 rounded p-2 w-full" name="street"
                     value="{{ old('street') }}" />
                 @error('street')
@@ -83,7 +81,7 @@
                 @enderror
             </div>
             <div class="mb-6">
-                <label for="country" class="inline-block text-lg mb-2">Country</label>
+                <label for="country" class="inline-block text-lg mb-2">Country:</label>
                 <input type="text" class="border border-gray-200 rounded p-2 w-full" name="country"
                     value="{{ old('country') }}" />
                 @error('country')
@@ -93,9 +91,7 @@
 
             {{-- password and password confirmation --}}
             <div class="mb-6">
-                <label for="password" class="inline-block text-lg mb-2">
-                    Password
-                </label>
+                <label for="password" class="inline-block text-lg mb-2"> Password </label>
                 <input type="password" class="border border-gray-200 rounded p-2 w-full" name="password"
                     value="{{ old('password') }}" />
                 @error('password')
@@ -104,9 +100,7 @@
             </div>
 
             <div class="mb-6">
-                <label for="password_confirmation" class="inline-block text-lg mb-2">
-                    Confirm Password
-                </label>
+                <label for="password_confirmation" class="inline-block text-lg mb-2">Confirm Password:</label>
                 <input type="password" class="border border-gray-200 rounded p-2 w-full" name="password_confirmation" />
             </div>
 
