@@ -33,10 +33,10 @@
                 <div class="mb-6">
                     <label for="profile_picture" class="inline-block text-lg mb-2">Current Profile Picture</label>
                     {{-- preview --}}
-                    <img class="border border-gray-200 rounded p-2 w-full" src="{{ auth()->user()->profile_picture }}"
-                        alt="Current Profile Picture" />
-
+                    <img class="border border-gray-200 rounded p-2 w-full"
+                        src="{{ asset('storage/' . auth()->user()->profile_picture) }}" alt="Current Profile Picture" />
                 </div>
+
                 {{-- select a new picture --}}
                 <div class="mb-6">
                     <label for="profile_picture" class="inline-block text-lg mb-2">Change Picture</label>
@@ -46,6 +46,7 @@
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </div>
+
                 {{-- address fields --}}
                 <div class="mb-6">
                     <label for="city" class="inline-block text-lg mb-2">City</label>
