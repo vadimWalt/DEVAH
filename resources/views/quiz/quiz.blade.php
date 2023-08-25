@@ -1,7 +1,12 @@
 <x-layout>
 
+ 
+
     <!-- Display quiz data -->
     @if (isset($quizData))
+
+
+
         <h2>topic of the quizz : <b> {{ $quizData[0]['category'] }}</b></h2>
         <h3>Difficulty: {{ $quizData[0]['difficulty'] }}</h3>
 
