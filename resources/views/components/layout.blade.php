@@ -70,13 +70,12 @@
         {{ $slot }}
     </main>
 
-        <a href="#nav">
-
-            <button class="fixed bottom-12 right-12 bg-gray-800 text-white p-3 rounded shadow">
-                
-                <i class="fas fa-arrow-up"></i>
-            </button>
-        </a>
+    <a href="#nav">
+        <button x-show="showScrollButton" @click="scrollToTop"
+            class="fixed bottom-12 right-12 bg-gray-800 text-white p-3 rounded shadow">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </a>
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto py-4">
             <div class="flex flex-col md:flex-row md:justify-between">
@@ -94,7 +93,23 @@
             </div>
         </div>
     </footer>
-    
+
 </body>
+<script>
+    Alpine.data('layout', () => ({
+        scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        },
+        showScrollButton: false,
+    }));
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        Alpine.store('layout').showScrollButton = scrollTop > 0;
+    });
+</script>
 
 </html>
