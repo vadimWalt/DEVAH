@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ChatMessageController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\QuizzController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Models\ChatMessage;
@@ -53,3 +54,15 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // Store new chatMessage
 Route::post('/chatMessage', [ChatMessageController::class, 'store'])->middleware('auth');
+
+
+/*
+|--------------------------------------------------------------------------
+|                              QUIZZ ROUTE
+|--------------------------------------------------------------------------
+*/
+
+
+Route::get("/quiz",[QuizzController::class,"index"]);
+Route::get("/quiz/display", [QuizzController::class, "displayQuizz"]);
+Route::post("/quiz/results",[QuizzController::class,"displayCorrection"]);
