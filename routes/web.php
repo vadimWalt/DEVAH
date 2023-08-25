@@ -23,14 +23,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+/*
+|--------------------------------------------------------------------------
+|                       HANDLING COURSES
+|--------------------------------------------------------------------------
+*/
+
 // List all courses
 Route::get('/courses', [CourseController::class, 'index']);
 
-// Create course form
-Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth');
-
-// Single course
-Route::get('/courses/{course}', [CourseController::class, 'show']);
+// Create new course
+Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth'); 
 
 // Store new course
 Route::post('/courses', [CourseController::class, 'store'])->middleware('auth');
@@ -47,6 +51,8 @@ Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->middle
 // Manage courses
 Route::get('/courses/manage', [CourseController::class, 'manage'])->middleware('auth');
 
+// Single course
+Route::get('/courses/{course}', [CourseController::class, 'show']);
 
 /*
 |--------------------------------------------------------------------------

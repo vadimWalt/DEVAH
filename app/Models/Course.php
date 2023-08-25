@@ -16,6 +16,6 @@ class Course extends Model
 
     public function teacher()
     {
-        return $this->users()->where('role', 'teacher')->first();
+        return $this->belongsTo(User::class, 'teacher_id');
     }
 }

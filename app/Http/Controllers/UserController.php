@@ -26,7 +26,7 @@ class UserController extends Controller
             'role' => 'required',
             'profile_picture' => ['required', Rule::imageFile()],
             'city' => 'required',
-            'zip_code' => ['required', 'regex:/^[0-9]{4}$/'],
+            'zip_code' => ['required', 'regex:/^[0-9]{4,}$/'],
             'street' => ['required', 'regex:/^[0-9]{2,}$/'],
             'country' => 'required',
         ]);

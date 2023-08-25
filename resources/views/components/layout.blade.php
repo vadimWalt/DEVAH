@@ -34,7 +34,7 @@
 </head>
 
 <body>
-
+    <x-flash-message />
     <header>
         <nav id="nav" class="bg-gray-800 p-4">
             <div class="container mx-auto flex justify-between items-center">
@@ -121,5 +121,21 @@
         </a>
     </footer>
 </body>
+<script>
+    Alpine.data('layout', () => ({
+        scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        },
+        showScrollButton: false,
+    }));
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        Alpine.store('layout').showScrollButton = scrollTop > 0;
+    });
+</script>
 
 </html>
