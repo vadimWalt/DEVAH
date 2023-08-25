@@ -1,18 +1,1 @@
-h2 {
-  font-size: 1.5rem;
-}
-
-h3 {
-  font-size: 1.3rem;
-}
-
-.question-container {
-  width: 70%;
-  margin: 20px auto;
-}
-.question-container h3 {
-  font-weight: bold;
-}
-.question-container > * {
-  margin-bottom: 10px;
-}/*# sourceMappingURL=quizStyle.css.map */
+/*# sourceMappingURL=quizStyle.css.map */
