@@ -7,7 +7,11 @@
         $quizData = session('quizData');
         // remove the token
         $submitCleaned = array_splice($submitedData, 1);
-        
+
+        // total number of question for the quiz
+        $nbQuestionInQuizz=(count($quizData));
+
+        $nbGoodAnswer = 0;
     @endphp
 
     <h2 style="text-align: center">correction of the quizz !</h2>
@@ -65,6 +69,9 @@
 
         @if ($submitCleaned[$i] == $justAnswerLong)
             <p  style="color: green"><b>your answer : </b> {{ $selectedAnswer }} / {{ $selectedAnswerText }}</p>
+            @php
+                $nbGoodAnswer++;
+            @endphp
         @else
            <p style="color: red"><b >your answer : </b> {{ $selectedAnswer }} / {{ $selectedAnswerText }}</p>
         @endif
@@ -73,14 +80,11 @@
         
         </div>
 
-     
-
-
-
-        
-
+    
     @endfor
 
-    <script></script>
+    
+        <p class="grade">you grade is : {{$nbGoodAnswer}} / {{$nbQuestionInQuizz}}</p>
+
 
 </x-layout>
