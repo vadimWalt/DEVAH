@@ -59,7 +59,13 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 // Log user in
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
-
+/*
+|--------------------------------------------------------------------------
+|                       CONTACT US FORM AND POST ROUTES
+|--------------------------------------------------------------------------
+*/
+Route::get('/contact', 'ContactController@show')->name('contact.show');
+Route::post('/contact', 'ContactController@store')->name('contact.store');
 
 
 

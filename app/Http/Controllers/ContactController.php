@@ -25,6 +25,6 @@ class ContactController extends Controller
         // Send email using the ContactFormMail mailer
         Mail::to('your@email.com')->send(new ContactFormMail($formFields));
     
-        return redirect('/')->with('message', 'We received your message and will respond accordingly!');
+        return redirect('/')->with('message', 'We received your message and will respond accordingly!'); 
     }
 }
