@@ -20,7 +20,7 @@ use App\Models\ChatMessage;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/test', [CourseController::class, 'index']);
+Route::get('/test', [CourseController::class, 'test']);
 
 Route::get('/courses', function () {
     return view('courses.index');
@@ -33,6 +33,15 @@ Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 // Create new user
 Route::post('/users', [UserController::class, 'store']);
 
+// Show edit user form
+Route::get('/users/{id}/profile', [UserController::class, 'edit'])->middleware('auth');
+
+// Update listing
+Route::put('/users/{id}', [UserController::class, 'update'])->middleware('auth');
+
+// Delete listing
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->middleware('auth');
+
 // Log user out
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
@@ -41,7 +50,6 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 
 // Log user in
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
-
 
 // Store new chatMessage
 Route::post('/chatMessage', [ChatMessageController::class, 'store'])->middleware('auth');

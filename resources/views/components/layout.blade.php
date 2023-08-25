@@ -33,7 +33,7 @@
 </head>
 
 <body>
-
+    <x-flash-message />
     <header>
         <nav class="bg-gray-800 p-4">
             <div class="container mx-auto flex justify-between items-center">
@@ -41,7 +41,7 @@
 
                 <div class="devah">
                     <a href="#" class="text-white">
-                        <i class="fa-solid fa-school fa-2xl" style="color: #511f46;"></i> </a>
+                        <i class="fa-solid fa-school fa-2xl" style="color: red;"></i> </a>
                     DEVAH ACADEMY
                 </div>
                 <div class="hidden md:flex space-x-4">
@@ -52,7 +52,7 @@
                     <a href="/courses" class="text-white">Courses</a>
                 </div>
                 @auth {{-- if we're logged in, show this content --}}
-                    <ul class="flex space-x-6 mr-6 text-lg">
+                    <ul class="hidden md:flex flex-row space-x-6 mr-6 text-lg">
                         <li>
                             <span class="font-bold uppercase">
                                 {{-- to access to logged user name, we need to use the auth() helper --}}
@@ -60,8 +60,13 @@
                             </span>
                         </li>
                         <li>
+                            <a href="/users/{{ auth()->user()->id }}/profile" class="hover:text-laravel">
+                                <i class="fa-solid fa-gear"></i> Manage Profile
+                            </a>
+                        </li>
+                        <li>
                             <a href="#" class="hover:text-laravel">
-                                <i class="fa-solid fa-gear"></i> Manage Listings(route not ready)
+                                MyCourses(route not ready)
                             </a>
                         </li>
                         <li>
