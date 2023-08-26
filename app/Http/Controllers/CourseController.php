@@ -13,7 +13,7 @@ class CourseController extends Controller
     //
     public function index()
     {
-        $courses = 0;
+        $courses[] = 0;
         return view('courses.index')->with('courses', $courses);
     }
 
@@ -26,7 +26,6 @@ class CourseController extends Controller
     {
         return view('courses.create');
     }
-
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -44,7 +43,7 @@ class CourseController extends Controller
         $course->content = $validatedData['content'];
         $course->save();
 
-        return redirect('/courses/' . $course->id);
+        return redirect('/courses/' . $course->id)->with('message','New Course created successfully!');
     }
 
 
