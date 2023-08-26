@@ -106,13 +106,17 @@ Route::post('/contact', [ContactController::class, 'store']);
 Route::post('/chatMessage', [ChatMessageController::class, 'store'])->middleware('auth');
 
 
-/* 
-Naming conventions
-- index = show all listings
-- show = show one listing
-- create = show form to create new listing
-- store = store new listing in the DB (on create form submit)
-- edit = show form to edit listing
-- update = update listing in DB (on edit form submit)
-- destroy = delete listing in DB
+Route::get("/quiz",[QuizzController::class,"index"]);
+Route::get("/quiz/display", [QuizzController::class, "displayQuizz"]);
+Route::post("/quiz/results",[QuizzController::class,"displayCorrection"]);
+
+/*
+|--------------------------------------------------------------------------
+|                               random pages
+|--------------------------------------------------------------------------
 */
+
+/**same but different */
+Route::get('/aboutus', function () {
+    return view('aboutus');
+});
