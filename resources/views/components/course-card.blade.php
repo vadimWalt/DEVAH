@@ -1,6 +1,16 @@
-<div class="min-h-screen bg-gray-500 py-20">
-    <h2 class="text-6xl text-center mb-8">Latest Courses</h2>
-    <div class="container mx-auto md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 space-y-4 md:space-y-0">
-        {{ $slot }}
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <!-- Course Picture -->
+    <img src="{{ $course->picture }}" alt="{{ $course->title }}"
+         class="w-full h-48 object-cover">
+    
+    <div class="p-4">
+        <!-- Course Title -->
+        <h3 class="text-lg font-semibold">{{ $course->title }}</h3>
+        
+        <!-- Course Description -->
+        <p class="text-gray-600">{{ $course->description }}</p>
+        
+        <!-- Learn More Link -->
+        <a href="/courses/{{ $course->id }}" class="mt-2 text-blue-600 hover:underline">Learn More</a>
     </div>
 </div>

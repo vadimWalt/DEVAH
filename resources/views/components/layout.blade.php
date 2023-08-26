@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="{{asset("images/favicon.png")}}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
     {{-- icon in the tab to make difference between website --}}
     {{-- <link rel="icon" href="" type="image/icon" /> --}}
     {{-- cdn for fontawesome --}}
@@ -54,7 +54,7 @@
                     <ul class="hidden md:flex space-x-4 flex-row items-center">
                         <li class="text-white flex">Welcome, <span class="font-bold uppercase">
                                 {{-- to access to logged user name, we need to use the auth() helper --}}<a href="/users/{{ auth()->user()->id }}/profile"
-                                    class="hover:text-gray-400"> 
+                                    class="hover:text-gray-400">
                                     {{-- <img class="stroke-2" src="/{{ auth()->user()->proflie_picture }}"
                                         alt="User Picture"> --}} {{ auth()->user()->name }}
                                     <i class="fa-solid fa-gear"></i>
@@ -104,8 +104,26 @@
     </header>
     <x-flash-message />
     <main class="min-h-screen mb-0 mt-0">
+
+        <!-- Display success message if available -->
+        @if (session()->has('success'))
+            <div class="bg-green-200 p-4 text-green-800">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <!-- Display error message if available -->
+        @if (session()->has('error'))
+            <div class="bg-red-200 p-4 text-red-800">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        <!-- Render the main content slot -->
         {{ $slot }}
+
     </main>
+
 
     <footer
         class="w-full flex flex-col items-center justify-start font-bold bg-gray-800 text-white h-24 mt-0 opacity-90 md:justify-center md:flex-row md:space-x-4">

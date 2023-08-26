@@ -33,6 +33,7 @@ Route::get('/', function () {
 // List all courses
 Route::get('/courses', [CourseController::class, 'index']);
 
+
 // Create new course
 Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth'); 
 
@@ -40,19 +41,20 @@ Route::get('/courses/create', [CourseController::class, 'create'])->middleware('
 Route::post('/courses', [CourseController::class, 'store'])->middleware('auth');
 
 // Edit course form
-Route::get('/courses/{course}/edit', [CourseController::class, 'edit'])->middleware('auth');
-// Update course
+Route::get('/courses/{course}/edit', [CourseController::class, 'editCourse'])->middleware('auth')->name('courses.edit-course');
 
-Route::put('/courses/{course}', [CourseController::class, 'update'])->middleware('auth');
+// Update course
+Route::put('/courses/{course}', [CourseController::class, 'update'])->middleware('auth')->name('courses.update');
 
 // Delete course
-Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->middleware('auth');
+Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->middleware('auth')->name('courses.destroy');
+
 
 // Manage courses
 Route::get('/courses/manage', [CourseController::class, 'manage'])->middleware('auth');
 
 // Single course
-Route::get('/courses/{course}', [CourseController::class, 'show']);
+Route::get('/courses/{course}', [CourseController::class, 'show'])->name('courses.show');
 
 /*
 |--------------------------------------------------------------------------
