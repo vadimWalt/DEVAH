@@ -1,3 +1,7 @@
+
+
+<link rel="stylesheet" href="{{asset('styles/quizOptionStyle.css')}}">
+
 <!-- Add a form to take user input -->
 <form action="/quiz/display" method="get">
     <label for="category">Category:</label>

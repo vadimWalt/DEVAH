@@ -1,0 +1,30 @@
+/* Quiz Results */
+.quiz-results {
+  text-align: center;
+}
+.quiz-results h2 {
+  margin-bottom: 10px;
+}
+.quiz-results h3 {
+  font-weight: bold;
+}
+.quiz-results .question-container {
+  margin-bottom: 20px;
+}
+.quiz-results .question-container h3 {
+  font-size: 16px;
+}
+.quiz-results .question-container p {
+  font-size: 14px;
+  font-weight: bold;
+}
+.quiz-results .question-container p.green {
+  color: green;
+}
+.quiz-results .question-container p.red {
+  color: red;
+}
+.quiz-results .question-container hr {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}/*# sourceMappingURL=quizResultsStyle.css.map */
