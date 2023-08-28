@@ -22,7 +22,8 @@ form {
   flex-direction: column;
   margin: 0 auto;
 }
-form .question-container {
+
+.question-container {
   background-color: lightblue;
   border: 3px solid white;
   margin: 20px;
@@ -31,26 +32,23 @@ form .question-container {
   width: 95%;
   box-shadow: 0 0 5px 5px lightgray;
 }
-form .question-container h2 {
+.question-container h2 {
   font-weight: bold;
   font-size: 1.1em;
   margin-bottom: 10px;
 }
-form .question-container .answer-container {
+.question-container .answer-container {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-form .question-container .answer-container .answer {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
+.question-container .answer-container .answer.good {
+  font-weight: bold;
+  color: green;
 }
-form .question-container .answer-container .answer p {
-  color: black;
-  font-weight: bolder;
-  overflow-wrap: break-word;
+.question-container .answer-container .answer.bad {
+  font-weight: bold;
+  color: red;
 }
 
 button {

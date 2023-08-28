@@ -2,6 +2,10 @@
 
     <link rel="stylesheet" href="{{ asset('/styles/quiz/quizBladeStyle.css') }}">
 
+    @php
+         $arrayOfQuestion = [];
+    @endphp
+
     <!-- Display quiz data -->
     @if (isset($quizData))
 
@@ -44,6 +48,9 @@
                     @endphp
                 @endwhile
 
+               @php
+                   $arrayOfQuestion[] = $question;
+               @endphp
 
 
                 <div class="question-container">
@@ -65,6 +72,10 @@
 
                 </div>
             @endforeach
+
+            @php
+                 session(['quizData' => $arrayOfQuestion]);
+            @endphp
 
             <button>submit</button>
         </form>

@@ -25,41 +25,38 @@ form {
     align-items: center;
     flex-direction: column;
     margin: 0 auto;
-    .question-container {
-        background-color: lightblue;
-        border: 3px solid white;
-        margin: 20px;
-        border-radius: 15px;
-        padding: 15px 30px;
-        width: 95%;
-        box-shadow: 0 0 5px 5px lightgray;
+}
 
-        h2 {
+.question-container {
+    background-color: lightblue;
+    border: 3px solid white;
+    margin: 20px;
+    border-radius: 15px;
+    padding: 15px 30px;
+    width: 95%;
+    box-shadow: 0 0 5px 5px lightgray;
+
+    h2 {
+        font-weight: bold;
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+
+    .answer-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        .answer.good {
             font-weight: bold;
-            font-size: 1.1em;
-            margin-bottom: 10px;
+            color: green;
         }
 
-        .answer-container {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            .answer {
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                gap: 10px;
-                p {
-                    color: black;
-                    font-weight: bolder;
-                    overflow-wrap: break-word;
-                }
-            }
+        .answer.bad {
+            font-weight: bold;
+            color: red;
         }
     }
 }
-
-
 
 button {
     border: 1px solid gray;
