@@ -1,9 +1,3 @@
-
-
 <x-layout>
-
-
-
-    
 
 </x-layout>
