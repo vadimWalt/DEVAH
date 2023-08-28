@@ -1,5 +1,5 @@
 <x-layout>
-    <link rel="stylesheet" href="{{ asset("/styles/quizStyle.css") }}">
+    <link rel="stylesheet" href="{{ asset("/styles/quiz/quizResultsStyle.css") }}">
 
     <!-- Display quiz data -->
 
@@ -15,7 +15,6 @@
     @endphp
 
     <h2 style="text-align: center">correction of the quizz !</h2>
-    <h3></h3>
 
 
     @for ($i = 0; $i < count($submitCleaned); $i++)
@@ -35,7 +34,7 @@
         <div class="question-container"> 
             
            {{-- display the  question 1 : and the question itself --}}
-        <h3> question {{ $i + 1 }} : {{ $question }} </h3>
+        <h3 class="question"> question {{ $i + 1 }} : {{ $question }} </h3>
 
 
         {{-- loop over all the array of correct_answer
@@ -58,8 +57,8 @@
                     // did it by searching in the answer fiel the valeu retrieve from the submit as answer_a for exemple
                 
                     $textRelatedtoAnswer = $quizData[$i]['answers'][$justAnswerLong];
-                
-                    echo "<p>Correct answer :  $justAnswer / " . htmlspecialchars($textRelatedtoAnswer) . '</p>';
+
+                    echo "<p> <b>Correct answer :  $justAnswer </b> <br> " . htmlspecialchars($textRelatedtoAnswer) . '</p>';
                 }
                 
             @endphp
@@ -68,12 +67,12 @@
         {{-- represent the character of the selected answer and the text linked to the selected answer  --}}
 
         @if ($submitCleaned[$i] == $justAnswerLong)
-            <p  style="color: green"><b>your answer : </b> {{ $selectedAnswer }} / {{ $selectedAnswerText }}</p>
+            <p  style="color: green"><b>your answer :  {{ $selectedAnswer }} </b> <br> {{ $selectedAnswerText }}</p>
             @php
                 $nbGoodAnswer++;
             @endphp
         @else
-           <p style="color: red"><b >your answer : </b> {{ $selectedAnswer }} / {{ $selectedAnswerText }}</p>
+           <p style="color: red"><b>your answer :  {{ $selectedAnswer }} </b> <br> {{ $selectedAnswerText }}</p>
         @endif
 
                 <hr>

@@ -1,0 +1,54 @@
+h2{
+    padding: 15px 30px;
+    background-color: lightblue;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+
+.question-container{
+    background-color: lightblue;
+    border: 3px solid white;
+    border-radius: 15px;
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px 30px; 
+    box-shadow: 0 0 5px 5px lightgray;
+
+    .question{
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+}
+
+.grade{
+
+    background-color: palevioletred;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+
+
+
+
+// BREAKPOINT FOR TABLEt VIEW
+@media only screen and (min-width: 720px) {
+    .question-container{
+        width:80%;
+    }
+}
+
+
+@media only screen and (min-width: 1080px) {
+
+    .question-container{
+        width: 60%;
+    }
+
+}

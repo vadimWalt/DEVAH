@@ -1,0 +1,173 @@
+
+
+<header>
+        <nav id="nav" class="bg-gray-800 p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                {{-- <div class="text-white text-xl font-semibold" >DEVAH ACADEMY</div>  --}}
+
+                <div class="devah">
+                    <a href="/" class="text-white">
+                        <i class="fa-solid fa-school fa-2xl" style="color: red;"></i> DEVAH ACADEMY</a>
+                </div>
+                <div class="hidden md:flex space-x-4 ">
+                    <a href="/" class="text-white hover:text-gray-400">Home</a>
+                    <a href="/courses" class="text-white hover:text-gray-400">Courses</a>
+                    <a href="/quiz" class="text-white">Quizzes</a>
+                    <a href="/contact" class="text-white hover:text-gray-400">Contact</a>
+                    <a href="/about" class="text-white hover:text-gray-400">About</a>
+                </div>
+                @auth {{-- if we're logged in, show this content --}}
+                    <ul class="hidden md:flex space-x-4 flex-row items-center">
+                        <li class="text-white flex">Welcome, <span class="font-bold uppercase">
+                                {{-- to access to logged user name, we need to use the auth() helper --}}<a href="/users/{{ auth()->user()->id }}/profile"
+                                    class="hover:text-gray-400">
+                                    {{-- <img class="stroke-2" src="/{{ auth()->user()->proflie_picture }}"
+                                        alt="User Picture"> --}} {{ auth()->user()->name }}
+                                    <i class="fa-solid fa-gear"></i>
+                                </a>
+                            </span></li>
+                        <li class="text-white"></li>
+                        <li class="text-white"><a href="/mycourses" class="hover:text-gray-400">
+                                MyCourses(route not ready)
+                            </a></li>
+                        <li class="text-white">
+                            <form class="inline hover:text-gray-400" method="POST" action="/logout">
+                                @csrf
+                                <button>
+                                    <i class="fa-solid fa-door-closed"></i> Logout
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
+                @else
+                    {{-- if we're not logged in, show that content instead --}}
+                    <div class="hidden md:flex space-x-4">
+                        <a href="/register" class="text-white">Register</a>
+                        <a href="/login" class="text-white">Login</a>
+                    </div>
+                @endauth
+                <div class="md:hidden">
+                    <button class="text-white">
+                        <div class="md:hidden relative" x-data="{ mobileMenuOpen: false }">
+                            <button class="text-white" @click="mobileMenuOpen = !mobileMenuOpen">
+                                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                            </button>
+                            <div x-show="mobileMenuOpen" @click.away="mobileMenuOpen = false"
+                                class="absolute top-0 right-2 bg-white w-32 mt-2 py-2 rounded shadow-md">
+                                <a href="/" class="block px-4 py-2 text-gray-800">Home</a>
+                                <a href="/about" class="block px-4 py-2 text-gray-800">About</a>
+                                <a href="/services" class="block px-4 py-2 text-gray-800">Services</a>
+                                <a href="/contact" class="block px-4 py-2 text-gray-800">Contact</a>
+                                <a href="/courses" class="block px-4 py-2 text-gray-800">Courses</a>
+                            </div>
+                        </div>
+                </div>
+        </nav>
+    </header>
+
+
+
+/* Add a black background color to the top navigation */
+.topnav {
+    --tw-bg-opacity: 1;
+    background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            width: 50px;
+        }
+
+        a {
+            color: white;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+    }
+
+     #menu-items {
+        display: none;
+       
+    }
+
+    #menu-items.show{
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+        top: 69px;
+        left: 0;
+        text-align: center;
+       
+
+        li{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border: 1px solid white;
+            padding: 20px;
+            width: 60%;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+        }
+    }
+
+    .checkBtn{
+        font-size: 2em;
+        color: white;
+        cursor: pointer;
+    }
+
+    
+    #check{
+        display: none;
+    }
+
+
+}
+
+
+
+tablet  
+
+ .topnav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-items: row;
+
+         
+        ul#menu-items {
+            position: static;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            gap: 20px;
+
+            li a {
+                color: white;
+            }
+        }
+    }
+
+    .topnav a.icon {
+        display: none;
+    }
