@@ -1,0 +1,11 @@
+#aboutus {
+  width: 70%;
+  margin: 100px auto;
+}
+#aboutus .card {
+  width: 100%;
+  padding: 0;
+}
+#aboutus > * {
+  margin-bottom: 50px;
+}/*# sourceMappingURL=aboutUsStyle.css.map */

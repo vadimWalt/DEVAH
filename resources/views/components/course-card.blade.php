@@ -1,40 +1,16 @@
-@props(['course'])
-
-
-<!-- component -->
-<div class="min-h-screen bg-gradient-to-tr from-red-300 to-yellow-200 flex justify-center items-center py-20">
-    <div class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 space-y-4 md:space-y-0">
-        <x-card />
-        <x-card />
-        <x-card />
-
-
-
-
+<div class="bg-white rounded-lg shadow-lg overflow-hidden">
+    <!-- Course Picture -->
+    <img src="{{ $course->picture }}" alt="{{ $course->title }}"
+         class="w-full h-48 object-cover">
+    
+    <div class="p-4">
+        <!-- Course Title -->
+        <h3 class="text-lg font-semibold">{{ $course->title }}</h3>
+        
+        <!-- Course Description -->
+        <p class="text-gray-600">{{ $course->description }}</p>
+        
+        <!-- Learn More Link -->
+        <a href="/courses/{{ $course->id }}" class="mt-2 text-blue-600 hover:underline">Learn More</a>
     </div>
 </div>
-
-
-{{--@props(['course'])
-
-<div class="bg-white shadow-lg rounded-lg overflow-hidden">
-    <!-- Your course card content here -->
-    <div class="p-6">
-        <h3 class="text-xl font-semibold">{{ $course->title }}</h3>
-        <!-- Other content here -->
-    </div>
-</div>
-
-
-
-@extends('layouts.app') <!-- Assuming you have a layout defined in resources/views/layouts/app.blade.php -->
-
-@section('content')
-<div class="min-h-screen bg-gradient-to-tr from-red-300 to-yellow-200 flex justify-center items-center py-20">
-    <div class="md:px-4 md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 space-y-4 md:space-y-0">
-        @foreach ($courses as $course)
-            <x-course-card :course="$course" />
-        @endforeach
-    </div>
-</div>
-@endsection--}}

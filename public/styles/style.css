@@ -1,7 +1,6 @@
-.devah{
-    color: red;
+.devah:hover {
+    transition-duration: 0.3s;
     text-shadow: 2px 5px 10px;
-    
 }
 
 p{

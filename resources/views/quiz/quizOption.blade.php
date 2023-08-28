@@ -1,5 +1,5 @@
 
-
+<x-layout>
 <link rel="stylesheet" href="{{asset('styles/quizOptionStyle.css')}}">
 
 <!-- Add a form to take user input -->
@@ -23,4 +23,4 @@
     <button type="submit">Get Quizz</button>
 </form>
 
-
+</x-layout>
