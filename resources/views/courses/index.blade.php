@@ -11,4 +11,11 @@
             @endforeach
         @endif
     </div>
-</x-layout>
+    
+    <div class="mt-6 p-4">
+        {{$courses->links()}}
+    </div>
+    
+    </x-layout> 
+
+  

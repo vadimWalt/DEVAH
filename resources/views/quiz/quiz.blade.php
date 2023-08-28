@@ -1,6 +1,6 @@
 <x-layout>
 
-    <link rel="stylesheet" href="{{ asset('/styles/quizStyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('/styles/quizBladeStyle.css') }}">
 
     <!-- Display quiz data -->
     @if (isset($quizData))

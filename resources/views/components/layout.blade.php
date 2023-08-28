@@ -23,7 +23,7 @@
             theme: {
                 extend: {
                     colors: {
-                        laravel: "#000013",
+                        laravel: "#2563eb",
                     },
                 },
             },
@@ -45,10 +45,10 @@
                 </div>
                 <div class="hidden md:flex space-x-4 ">
                     <a href="/" class="text-white hover:text-gray-400">Home</a>
-                    <a href="/about" class="text-white hover:text-gray-400">About</a>
-                    <a href="/services" class="text-white hover:text-gray-400">Services</a>
-                    <a href="/contact" class="text-white hover:text-gray-400">Contact</a>
                     <a href="/courses" class="text-white hover:text-gray-400">Courses</a>
+                    <a href="/quiz" class="text-white">Quizzes</a>
+                    <a href="/contact" class="text-white hover:text-gray-400">Contact</a>
+                    <a href="/about" class="text-white hover:text-gray-400">About</a>
                 </div>
                 @auth {{-- if we're logged in, show this content --}}
                     <ul class="hidden md:flex space-x-4 flex-row items-center">
@@ -155,4 +155,26 @@
     });
 </script>
 
+    {{--<footer class="fixed bottom-0 left-0 w-full flex flex-col items-center justify-start font-bold bg-gray-800 text-white h-24 mt-24 opacity-90 md:justify-center md:flex-row md:space-x-4">
+        <ul>
+           <li class="ml-2 mb-2 md:mb-0">Copyright &copy; 2022, All Rights reserved</li>
+           <li>
+            <a href="/" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">enroll to a course</a>
+           </li>
+
+        </ul>
+        {{--<p class="ml-2 mb-2 md:mb-0"></p>
+       
+        <a href="/" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">enroll to a course</a>
+    </footer>--}}
+        
+</body>
+
 </html>
+
+
+
+
+
+
+
