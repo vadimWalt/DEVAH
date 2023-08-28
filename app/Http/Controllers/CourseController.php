@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Http;
 
 class CourseController extends Controller
 {
+    public function welcome()
+    {
+        $courses = Course::inRandomOrder()->take(6)->get();
+        return view('welcome', compact('courses'));
+    }
 
     // Display all courses
     public function index()
@@ -66,6 +71,14 @@ class CourseController extends Controller
     public function editCourse(Course $course)
     {
         return view('courses.edit-course')->with('course', $course);
+    }
+
+    // Manage the courses
+    public function manageCourses()
+    {
+        $user = Auth::user();
+        $teacherCourses = Course::where('teacher_id', $user->id)->get();
+        return view('courses.manage-course')->with('teacherCourses', $teacherCourses);
     }
 
     // Update an existing course

@@ -19,10 +19,7 @@ use App\Http\Controllers\ChatMessageController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [CourseController::class, 'welcome'])->name('welcome');
 
 /*
 |--------------------------------------------------------------------------
@@ -49,9 +46,8 @@ Route::put('/courses/{course}', [CourseController::class, 'update'])->middleware
 // Delete course
 Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->middleware('auth')->name('courses.destroy');
 
-
 // Manage courses
-Route::get('/courses/manage', [CourseController::class, 'manage'])->middleware('auth');
+Route::get('/manage-courses', [CourseController::class, 'manageCourses'])->middleware('auth')->name('manage.courses');
 
 // Single course
 Route::get('/courses/{course}', [CourseController::class, 'show'])->name('courses.show');

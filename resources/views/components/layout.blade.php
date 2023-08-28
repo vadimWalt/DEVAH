@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/x-icon" href="{{asset("images/favicon.png")}}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.png') }}">
     {{-- icon in the tab to make difference between website --}}
     {{-- <link rel="icon" href="" type="image/icon" /> --}}
     {{-- cdn for fontawesome --}}
@@ -61,8 +61,8 @@
                                 </a>
                             </span></li>
                         <li class="text-white"></li>
-                        <li class="text-white"><a href="/mycourses" class="hover:text-gray-400">
-                                MyCourses(route not ready)
+                        <li class="text-white"><a href="/manage-courses" class="hover:text-gray-400">
+                                My Courses
                             </a></li>
                         <li class="text-white">
                             <form class="inline hover:text-gray-400" method="POST" action="/logout">
@@ -122,6 +122,12 @@
         <!-- Render the main content slot -->
         {{ $slot }}
 
+        <!-- Scroll up button -->
+        <a x-data="scrollButton()" @click="scrollToTop" x-show="showScrollButton"
+            class="fixed bottom-12 right-12 bg-gray-500 text-white p-6 rounded-full shadow">
+            <i class="fas fa-arrow-up"></i>
+        </a>
+
     </main>
 
 
@@ -133,29 +139,32 @@
             </li>
             <li>Copyright &copy; 2022, All Rights reserved</li>
         </ul>
-        <a href="#nav" class="fixed bottom-12 right-12 bg-gray-500 text-white p-6 rounded-full shadow">
-            <i class="fas fa-arrow-up"></i>
-        </a>
+
     </footer>
-</body>
-<script>
-    Alpine.data('layout', () => ({
-        scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        },
-        showScrollButton: false,
-    }));
 
-    window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        Alpine.store('layout').showScrollButton = scrollTop > 0;
-    });
-</script>
+    <!-- JavaScript for scroll button -->
+    <script>
+        function scrollButton() {
+            return {
+                showScrollButton: false,
+                scrollToTop() {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                },
+            };
+        }
 
-    {{--<footer class="fixed bottom-0 left-0 w-full flex flex-col items-center justify-start font-bold bg-gray-800 text-white h-24 mt-24 opacity-90 md:justify-center md:flex-row md:space-x-4">
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            Alpine.store('scrollButton').showScrollButton = scrollTop > 0;
+        });
+    </script>
+
+
+
+    {{-- <footer class="fixed bottom-0 left-0 w-full flex flex-col items-center justify-start font-bold bg-gray-800 text-white h-24 mt-24 opacity-90 md:justify-center md:flex-row md:space-x-4">
         <ul>
            <li class="ml-2 mb-2 md:mb-0">Copyright &copy; 2022, All Rights reserved</li>
            <li>
@@ -163,18 +172,11 @@
            </li>
 
         </ul>
-        {{--<p class="ml-2 mb-2 md:mb-0"></p>
+        {{-- <p class="ml-2 mb-2 md:mb-0"></p>
        
         <a href="/" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">enroll to a course</a>
-    </footer>--}}
-        
+    </footer> --}}
+
 </body>
 
 </html>
-
-
-
-
-
-
-
