@@ -1,26 +1,36 @@
-
 <x-layout>
-<link rel="stylesheet" href="{{asset('styles/quizOptionStyle.css')}}">
+    <link rel="stylesheet" href="{{ asset('styles/quiz/quizOptionStyle.css') }}">
 
-<!-- Add a form to take user input -->
-<form action="/quiz/display" method="get">
-    <label for="category">Category:</label>
-    <select name="category" id="category">
-        <option value="Code">Code</option>
-        <option value="SQL">SQL</option>
-        <option value="Docker">Docker</option>
-    </select><br>
+    <!-- Add a form to take user input -->
+    <form action="/quiz/display" method="get">
+       
 
-    <label for="limit">nb question:</label>
-    <input type="number" name="limit" id="limit" min="5" max="10" value="5"><br>
+        <div class="input-block">
+             <label for="category">Category:</label>
+            <select name="category" id="category">
+                <option value="Code">Code</option>
+                <option value="SQL">SQL</option>
+                <option value="Docker">Docker</option>
+            </select><br>
+        </div>
+        <div class="input-block">
 
-    <label for="difficulty">Difficulty:</label>
-    <select name="difficulty" id="difficulty">
-        <option value="Easy">Easy</option>
-        <option value="Medium">Medium</option>
-        <option value="Hard">Hard</option>
-    </select><br>
-    <button type="submit">Get Quizz</button>
-</form>
+            <label for="limit">nb question:</label>
+            <input type="number" name="limit" id="limit" min="5" max="10" value="5"><br>
+
+        </div>
+        <div class="input-block">
+            <label for="difficulty">Difficulty:</label>
+            <select name="difficulty" id="difficulty">
+                <option value="Easy">Easy</option>
+                <option value="Medium">Medium</option>
+                <option value="Hard">Hard</option>
+            </select><br>
+        </div>
+
+
+
+        <button type="submit" id="submitBtn">Get Quizz</button>
+    </form>
 
 </x-layout>

@@ -1,33 +1,155 @@
-.devah:hover {
-    transition-duration: 0.3s;
-    text-shadow: 2px 5px 10px;
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
 }
 
-p{
-    color: brown;
+/* Style for the navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
 }
 
-ul{
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: center;
-    margin-top: 5x;
-    gap: 20px;
-    height: 100px;
-    font-size: x-small;
-
+/* Style for the logo */
+.logo {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 15px;
+  margin-right: 15px;
 }
- ul li a{
-    font-size: small;
-    border-radius: 20px;
-    padding: 4px 8px 8px 8px ;
-    background-color: black;
-    color: white;
-
-
-}
-ul li{
-    list-style: none;
-    
+.logo img {
+  width: 50px;
 }
 
+/* Style for the navigation links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  font-size: calc(0.5rem + 1.2vw);
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+}
+
+/* drop down menu part */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  content: "▾"; /* Unicode down arrow character */
+  margin-left: 0.5rem;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  z-index: 1;
+  min-width: 120px;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Style for the burger menu */
+.burger-menu {
+  display: none; /* Hidden on desktop */
+  cursor: pointer;
+}
+
+.burger-menu .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 5px 0;
+}
+
+/***************************************************************************
+*   
+*                                 FOOOOOOOTTTTTEEEERRR
+*                            
+***************************************************************************/
+#footer.show-scroll-up {
+  transition: opacity 0.3s ease-in-out;
+}
+
+#footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 15px;
+}
+#footer ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#footer ul li {
+  color: white;
+}
+#footer #scroll-up {
+  padding: 10px 15px;
+  background-color: white;
+  color: black;
+  border-radius: 50%;
+}
+
+/* Media query for mobile view */
+@media (max-width: 720px) {
+  .nav-links {
+    display: none; /* Hide navigation links on mobile */
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    height: 100vh;
+  }
+  .nav-links li {
+    padding: 20px;
+  }
+  .nav-links.active {
+    display: flex; /* Show navigation links when menu is active */
+  }
+  .burger-menu {
+    display: block; /* Show burger menu icon on mobile */
+  }
+}
+/*  BREAKPOINT FOR TABLEt VIEW */
+@media only screen and (min-width: 721px) and (max-width: 1080px) {
+  /* ... Your tablet styles ... */
+  #footer {
+    flex-direction: row;
+    gap: 100px;
+  }
+}
+/* BREAKPOINT FOR desktop VIEW */
+@media only screen and (min-width: 1081px) {
+  /* ... Your desktop styles ... */
+}/*# sourceMappingURL=style.css.map */
