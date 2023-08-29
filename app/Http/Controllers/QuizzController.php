@@ -31,8 +31,6 @@ class QuizzController extends Controller
         }
 
         $data = $response->json();
-
-        session(['quizData' => $data]);
         
         return view('quiz.quiz', ['quizData' => $data]);
     }
@@ -42,8 +40,10 @@ class QuizzController extends Controller
 
 
         $submitedData = $request->all(); // Get all form responses
+       
 
-    return view("quiz.quizResults",[
+
+    return view("quiz.quizResultsBizz",[
             "submitedData"=>$submitedData,
     ]);
     }

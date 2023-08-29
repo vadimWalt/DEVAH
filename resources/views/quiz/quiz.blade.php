@@ -1,17 +1,23 @@
 <x-layout>
 
-    <link rel="stylesheet" href="{{ asset('/styles/quizBladeStyle.css') }}">
+    <link rel="stylesheet" href="{{ asset('/styles/quiz/quizBladeStyle.css') }}">
+
+    @php
+         $arrayOfQuestion = [];
+    @endphp
 
     <!-- Display quiz data -->
     @if (isset($quizData))
 
+        
+
         <div class="topQuiz">
 
-             <h2>topic of the quizz : <b> {{ $quizData[0]['category'] }}</b></h2>
-        <h3>Difficulty: {{ $quizData[0]['difficulty'] }}</h3>
+            <h2>topic of the quizz : <b> {{ $quizData[0]['category'] }}</b></h2>
+            <h3>Difficulty: {{ $quizData[0]['difficulty'] }}</h3>
 
         </div>
-       
+
 
         <form action="/quiz/results" method="post">
             @csrf
@@ -19,7 +25,6 @@
 
             {{-- loop over all the questions to make the display --}}
             @foreach ($quizData as $question)
-
                 {{-- dont need to read this part --}}
                 {{-- case of the multiple choice question
                     we avoid qcm in our context --}}
@@ -38,6 +43,7 @@
                         if ($response->failed()) {
                             abort(500, 'Error fetching data from API');
                         }
+
                         
                         $data = $response->json();
                         
@@ -45,8 +51,11 @@
                     @endphp
                 @endwhile
 
+               @php
+                   $arrayOfQuestion[] = $question;
+               @endphp
 
-                
+
                 <div class="question-container">
                     {{-- case with the single answer question --}}
                     <h2>Question {{ $loop->index + 1 }}: {{ $question['question'] }}</h2>
@@ -55,20 +64,21 @@
 
                         @foreach ($question['answers'] as $key => $value)
                             @if ($value !== null)
-
                                 <div class="answer">
                                     <input type="radio" name="{{ $question['id'] }}"
-                                    value="{{ $key }}">{{ $value }}
+                                        value="{{ $key }}"><p>{{ $value }}</p>
                                 </div>
-                                
                             @endif
                         @endforeach
 
                     </div>
 
-                    <hr>
                 </div>
             @endforeach
+
+            @php
+                 session(['quizData' => $arrayOfQuestion]);
+            @endphp
 
             <button>submit</button>
         </form>
