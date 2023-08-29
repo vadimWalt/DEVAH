@@ -2,8 +2,14 @@
     <header>
         <!-- Page title -->
         <h1 class="text-3xl text-center font-bold my-6 uppercase">
-            Manage Courses
+            My Courses
         </h1>
+        <!-- Create course button -->
+        <div class="text-center">
+            <a href="{{ route('courses.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">
+                Create Course
+            </a>
+        </div>
     </header>
     <!-- Table to display courses -->
     <table class="w-full table-auto rounded-sm">

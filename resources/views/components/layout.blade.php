@@ -60,6 +60,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">Account</a>
                     <ul class="dropdown-menu">
+                        <li><a href="/manage-courses">My Courses</a></li>
                         <li><a href="/logout">logout</a></li>
                         <li><a href="/users/{{ auth()->user()->id }}/profile">Edit</a></li>
                     </ul>

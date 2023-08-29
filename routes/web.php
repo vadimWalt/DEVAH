@@ -31,7 +31,7 @@ Route::get('/', [CourseController::class, 'welcome'])->name('welcome');
 Route::get('/courses', [CourseController::class, 'index']);
 
 // Create new course
-Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth'); 
+Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth')->name('courses.create'); 
 
 // Store new course
 Route::post('/courses', [CourseController::class, 'store'])->middleware('auth');

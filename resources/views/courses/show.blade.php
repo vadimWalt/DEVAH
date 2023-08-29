@@ -29,7 +29,7 @@
             </div>
 
             <!-- Display Chatroom Container -->
-            <x-chatroom-container />
+            <x-chatroom-container :course="$course" />
 
             <!-- Edit & Delete Buttons (visible to teacher who created the course) -->
             @auth
