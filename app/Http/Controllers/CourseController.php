@@ -13,14 +13,14 @@ class CourseController extends Controller
 {
     public function welcome()
     {
-        $courses = Course::inRandomOrder()->take(6)->get();
+        $courses = Course::latest()->limit(3)->get();
         return view('welcome', compact('courses'));
     }
 
     // Display all courses
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::paginate(3);
         return view('courses.index')->with('courses', $courses);
     }
 
@@ -80,6 +80,7 @@ class CourseController extends Controller
         $teacherCourses = Course::where('teacher_id', $user->id)->get();
         return view('courses.manage-course')->with('teacherCourses', $teacherCourses);
     }
+
 
     // Update an existing course
     public function update(Request $request, Course $course)

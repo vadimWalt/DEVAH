@@ -7,6 +7,6 @@
     @include('partials._steps')
 
     <!-- Include the course list component with the provided courses -->
-    <x-course-list :courses="$courses" />
+    <x-latest-course :courses="$courses" />
 
 </x-layout>
