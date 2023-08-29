@@ -19,6 +19,8 @@
     }
 }
 
+
+
 form {
     display: flex;
     justify-content: center;
@@ -46,6 +48,13 @@ form {
         display: flex;
         flex-direction: column;
         gap: 15px;
+
+        .answer{
+            display: flex;
+            gap: 5px;
+            flex-direction: row;
+        }
+
         .answer.good {
             font-weight: bold;
             color: green;

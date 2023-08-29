@@ -42,6 +42,11 @@ form {
   flex-direction: column;
   gap: 15px;
 }
+.question-container .answer-container .answer {
+  display: flex;
+  gap: 5px;
+  flex-direction: row;
+}
 .question-container .answer-container .answer.good {
   font-weight: bold;
   color: green;

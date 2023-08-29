@@ -40,6 +40,8 @@ class QuizzController extends Controller
 
 
         $submitedData = $request->all(); // Get all form responses
+       
+
 
     return view("quiz.quizResultsBizz",[
             "submitedData"=>$submitedData,

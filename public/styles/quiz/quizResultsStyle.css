@@ -1,9 +1,14 @@
-h2 {
-  padding: 15px 30px;
-  background-color: lightblue;
-  color: white;
+.topQuiz {
+  background-color: aqua;
+  padding: 15px;
+  text-align: center;
+  font-size: 1.3em;
+}
+.topQuiz h3 {
   font-weight: bold;
-  font-size: 1.2em;
+}
+.topQuiz b {
+  color: blue;
 }
 
 .question-container {
@@ -16,8 +21,20 @@ h2 {
   box-shadow: 0 0 5px 5px lightgray;
 }
 .question-container .question {
+  font-size: 1.1em;
   font-weight: bold;
+  margin-bottom: 25px;
+}
+.question-container .answer {
   margin-bottom: 20px;
+}
+.question-container .answer.good {
+  color: green;
+  font-weight: bold;
+}
+.question-container .answer.bad {
+  color: red;
+  font-weight: bold;
 }
 
 .grade {

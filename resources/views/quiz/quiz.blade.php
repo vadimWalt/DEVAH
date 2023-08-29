@@ -9,6 +9,8 @@
     <!-- Display quiz data -->
     @if (isset($quizData))
 
+        
+
         <div class="topQuiz">
 
             <h2>topic of the quizz : <b> {{ $quizData[0]['category'] }}</b></h2>
@@ -41,6 +43,7 @@
                         if ($response->failed()) {
                             abort(500, 'Error fetching data from API');
                         }
+
                         
                         $data = $response->json();
                         

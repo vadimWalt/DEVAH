@@ -65,9 +65,15 @@
                     </ul>
                 </li>
             @else
-                <li><a href="/">Home</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="/quiz">Quizzes</a></li>
+               
+                 <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Courses</a></li>
+                        <li><a href="/quiz">Quizzes</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="/contact">Contact</a></li>
                 <li><a href="aboutus">About us</a></li>
 
