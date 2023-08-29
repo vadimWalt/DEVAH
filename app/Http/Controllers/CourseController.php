@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\ChatRoom;
 use App\Models\Course;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
@@ -63,6 +64,13 @@ class CourseController extends Controller
         $course->description = $validatedData['description'];
         $course->content = $validatedData['content'];
         $course->save();
+
+        // Create a chatroom for the course
+        $chatroom = new ChatRoom();
+        $chatroom->course_id = $course->id; // Associate chatroom with the course
+        $chatroom->name = 'Course Chat'; // Set a default name for the chatroom
+        $chatroom->creation_date = now(); // Set the creation date of the chatroom
+        $chatroom->save();
 
         return redirect('/courses/' . $course->id)->with('success', 'Course created successfully!');
     }

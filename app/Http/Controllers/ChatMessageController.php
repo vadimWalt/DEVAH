@@ -4,23 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ChatMessage;
+use App\Models\ChatRoom;
 use Illuminate\Http\Request;
 
 class ChatMessageController extends Controller
 {
-    // store new chatMessage in DB
+    // Store new chatMessage in DB
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            // here we will add what rules we want for our fields
             'chatMessage' => 'required',
+            'chatroom_id' => 'required|exists:chat_rooms,id', // Make sure the provided chatroom_id exists in the chat_rooms table
         ]);
 
-        // this will add the logged in user id to the new message
+        // Add the logged in user id to the new message
         $formFields['user_id'] = auth()->id();
 
+        // Create the new chat message
         ChatMessage::create($formFields);
 
-            /* add a return to refresh the chatRoom and show the new message that's been sent */;
+        // Redirect back to the course's show page with a message
+        return redirect()->back()->with('success', 'Message sent successfully.');
     }
 }

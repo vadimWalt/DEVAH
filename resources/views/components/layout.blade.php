@@ -50,7 +50,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">Services</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Courses</a></li>
+                        <li><a href="/courses">Courses</a></li>
                         <li><a href="/quiz">Quizzes</a></li>
                     </ul>
                 </li>
@@ -65,8 +65,7 @@
                     </ul>
                 </li>
             @else
-               
-                 <li class="dropdown">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle">Services</a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Courses</a></li>

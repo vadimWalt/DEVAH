@@ -28,6 +28,9 @@
                 <p>{!! nl2br(e($course->content)) !!}</p>
             </div>
 
+            <!-- Display Chatroom Container -->
+            <x-chatroom-container />
+
             <!-- Edit & Delete Buttons (visible to teacher who created the course) -->
             @auth
                 @if (Auth::user()->id === $course->teacher_id)
