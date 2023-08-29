@@ -1,5 +1,5 @@
-<div {{ $attributes->merge(['class' => 'bg-gray-50 border border-gray-200 rounded p-6 align-start']) }}>
-    <div class="flex justify-between items-center mb-2">
+<div {{ $attributes->merge(['class' => 'bg-gray-50 border border-gray-200 rounded p-3 align-start w-1/2 my-10' ] ) }}>
+    <div class="flex justify-between items-center mb-2 ">
         <small class="font-semibold">
             {{ $username }}
         </small>
@@ -7,7 +7,6 @@
     <p class="text-sm">
         {{ $messageContent }}
     </p>
-    <br>
 
     <span class="text-xs text-gray-400">
         {{ $timestamp }}
