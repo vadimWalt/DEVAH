@@ -110,6 +110,12 @@ Route::post('/contact', [ContactController::class, 'store']);
 Route::post('/chatMessage', [ChatMessageController::class, 'store'])->middleware('auth');
 
 
+/*
+|--------------------------------------------------------------------------
+|                                   QUUUIIIIZZZZZZ
+|--------------------------------------------------------------------------
+*/
+
 Route::get("/quiz",[QuizzController::class,"index"]);
 Route::get("/quiz/display", [QuizzController::class, "displayQuizz"]);
 Route::post("/quiz/results",[QuizzController::class,"displayCorrection"]);
