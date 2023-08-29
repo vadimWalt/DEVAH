@@ -7,6 +7,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ChatMessageController;
+use App\Http\Controllers\ChatRoomController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -128,7 +130,27 @@ Route::post("/quiz/results",[QuizzController::class,"displayCorrection"]);
 Route::get('/aboutus', function () {
     return view('aboutus');
 });
-/* 
+
+
+
+/*    
+here is the routes for the show chat messages */
+
+
+
+Route::get('/chatmessages', [ChatMessageController::class, 'index'])->name('chatmessage.index');
+Route::get('/chatmessages/create', [ChatMessageController::class, 'create'])->name('chatmessage.create');
+Route::post('/chatmessages', [ChatMessageController::class, 'store'])->name('chatmessage.store');
+
+/*
+here's the route to for the chatroom 
+*/
+
+Route::get('/chatroom', [ChatRoomController::class, 'show'])->name('chatroom.show');
+
+
+
+/*
 Naming conventions
 - index = show all listings
 - show = show one listing

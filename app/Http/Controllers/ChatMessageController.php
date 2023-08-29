@@ -1,26 +1,38 @@
 <?php
-
+ /*index and create for chatMessage*/
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\ChatMessage;
+use App\Models\ChatRoom;
 use Illuminate\Http\Request;
 
 class ChatMessageController extends Controller
 {
-    // store new chatMessage in DB
+    public function index()
+    {
+        $chatMessages = ChatMessage::all(); // Fetch all chat messages from the database
+
+        return view('chatmessage.index', compact('chatMessages'));
+    }
+
+    public function create()
+    {
+        return view('chatmessage.create');
+    }
+
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            // here we will add what rules we want for our fields
             'chatMessage' => 'required',
         ]);
 
-        // this will add the logged in user id to the new message
+        // This will add the logged-in user's ID to the new message
         $formFields['user_id'] = auth()->id();
 
         ChatMessage::create($formFields);
 
-            /* add a return to refresh the chatRoom and show the new message that's been sent */;
+        // Redirect back to the chat messages index page
+        return redirect()->route('chatmessage.index');
     }
 }

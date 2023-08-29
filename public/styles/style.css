@@ -153,3 +153,24 @@
 @media only screen and (min-width: 1081px) {
   /* ... Your desktop styles ... */
 }/*# sourceMappingURL=style.css.map */
+.chat-link {
+    background-color: red; /* Background color */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none; /* Remove underline from link */
+    border-radius: 100px;
+}
+
+/* Change link color on hover */
+.chat-link:hover {
+    background-color: darkred; /* Change background color on hover */
+    color: white; /* Text color on hover */
+}
+
+.rounded-custom {
+    border-radius: 100px;
+}
+
+
+
