@@ -1,0 +1,17 @@
+.sendMessageContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+@media only screen and (min-width: 720px) {
+  .chatroom {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 1080px) {
+  form {
+    width: 60%;
+    margin: 0 auto;
+  }
+}/*# sourceMappingURL=chatRoomsStyle.css.map */
