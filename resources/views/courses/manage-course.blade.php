@@ -4,11 +4,15 @@
         <h1 class="text-3xl text-center font-bold my-6 uppercase">
             My Courses
         </h1>
-        <!-- Create course button -->
+        <!-- Create course button (visible to teachers) -->
         <div class="text-center">
-            <a href="{{ route('courses.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">
-                Create Course
-            </a>
+            @auth
+                @if (auth()->user()->role === \App\Models\User::ROLE_TEACHER)
+                    <a href="{{ route('courses.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">
+                        Create Course
+                    </a>
+                @endif
+            @endauth
         </div>
     </header>
     <!-- Table to display courses -->
