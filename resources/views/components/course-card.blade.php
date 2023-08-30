@@ -1,7 +1,8 @@
 <div class="bg-white rounded-lg shadow-lg overflow-hidden flex">
     <!-- Course Picture -->
-    <img src="{{ $course->picture }}" alt="{{ $course->title }}" class="w-full h-48 object-cover">
-
+    <img src="{{ $course->picture ? asset('storage/' . $course->picture) : asset('storage/images/courses/no-image.jpg')}}" alt="{{ $course->title }}"
+         class="w-full h-48 object-cover">
+    
     <div class="p-4">
         <!-- Course Title -->
         <h3 class="text-lg font-semibold">{{ $course->title }}</h3>

@@ -43,10 +43,11 @@ class CourseController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'description' => 'required',
             'content' => 'required',
         ]);
+
 
         // Check if a course with the same title, description, and content already exists
         $existingCourse = Course::where('title', $validatedData['title'])
@@ -58,22 +59,22 @@ class CourseController extends Controller
             return redirect()->back()->with('error', 'A course with the same content already exists.');
         }
 
-        $course = new Course();
-        $course->teacher_id = Auth::user()->id;
-        $course->title = $validatedData['title'];
-        $course->picture = $validatedData['picture'];
-        $course->description = $validatedData['description'];
-        $course->content = $validatedData['content'];
-        $course->save();
+        // Handle uploaded picture if provided
+        if ($request->hasFile('picture')) {
+            $validatedData["picture"] = $request->file('picture')->store('images/courses', 'public');
+        }
+        $validatedData["teacher_id"] = auth()->user()->id;
+
+        $newCourse = Course::create($validatedData);
 
         // Create a chatroom for the course
-        $chatroom = new ChatRoom();
+        /* $chatroom = new ChatRoom();
         $chatroom->course_id = $course->id; // Associate chatroom with the course
         $chatroom->name = 'Course Chat'; // Set a default name for the chatroom
         $chatroom->creation_date = now(); // Set the creation date of the chatroom
-        $chatroom->save();
+        $chatroom->save(); */
 
-        return redirect('/courses/' . $course->id)->with('success', 'Course created successfully!');
+        return redirect('/courses/' . $newCourse->id)->with('success', 'Course created successfully!');
     }
 
     // Show the course edit form
@@ -108,7 +109,7 @@ class CourseController extends Controller
 
         // Check if a new picture is provided
         if ($request->hasFile('picture')) {
-            $picturePath = $request->file('picture')->store('course_pictures', 'public');
+            $picturePath = $request->file('picture')->store('images/courses', 'public');
             $course->picture = $picturePath;
         }
 

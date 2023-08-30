@@ -1,6 +1,6 @@
 <x-layout>
     <!-- Course List Container -->
-    <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
+    <div>
         <!-- Check if there are no courses -->
         @if (count($courses) == 0)
             <p>No courses found</p>
