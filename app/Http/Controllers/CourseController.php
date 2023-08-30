@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\ChatRoom;
 use App\Models\Course;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
@@ -11,11 +12,16 @@ use Illuminate\Support\Facades\Http;
 
 class CourseController extends Controller
 {
+    public function welcome()
+    {
+        $courses = Course::latest()->limit(3)->get();
+        return view('welcome', compact('courses'));
+    }
 
     // Display all courses
     public function index()
     {
-        $courses = Course::all();
+        $courses = Course::paginate(3);
         return view('courses.index')->with('courses', $courses);
     }
 
@@ -59,6 +65,13 @@ class CourseController extends Controller
         $course->content = $validatedData['content'];
         $course->save();
 
+        // Create a chatroom for the course
+        $chatroom = new ChatRoom();
+        $chatroom->course_id = $course->id; // Associate chatroom with the course
+        $chatroom->name = 'Course Chat'; // Set a default name for the chatroom
+        $chatroom->creation_date = now(); // Set the creation date of the chatroom
+        $chatroom->save();
+
         return redirect('/courses/' . $course->id)->with('success', 'Course created successfully!');
     }
 
@@ -67,6 +80,15 @@ class CourseController extends Controller
     {
         return view('courses.edit-course')->with('course', $course);
     }
+
+    // Manage the courses
+    public function manageCourses()
+    {
+        $user = Auth::user();
+        $teacherCourses = Course::where('teacher_id', $user->id)->get();
+        return view('courses.manage-course')->with('teacherCourses', $teacherCourses);
+    }
+
 
     // Update an existing course
     public function update(Request $request, Course $course)

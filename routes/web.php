@@ -21,10 +21,7 @@ use App\Http\Controllers\ChatRoomController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [CourseController::class, 'welcome'])->name('welcome');
 
 /*
 |--------------------------------------------------------------------------
@@ -35,9 +32,8 @@ Route::get('/', function () {
 // List all courses
 Route::get('/courses', [CourseController::class, 'index']);
 
-
 // Create new course
-Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth'); 
+Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth')->name('courses.create'); 
 
 // Store new course
 Route::post('/courses', [CourseController::class, 'store'])->middleware('auth');
@@ -51,9 +47,8 @@ Route::put('/courses/{course}', [CourseController::class, 'update'])->middleware
 // Delete course
 Route::delete('/courses/{course}', [CourseController::class, 'destroy'])->middleware('auth')->name('courses.destroy');
 
-
 // Manage courses
-Route::get('/courses/manage', [CourseController::class, 'manage'])->middleware('auth');
+Route::get('/manage-courses', [CourseController::class, 'manageCourses'])->middleware('auth')->name('manage.courses');
 
 // Single course
 Route::get('/courses/{course}', [CourseController::class, 'show'])->name('courses.show');

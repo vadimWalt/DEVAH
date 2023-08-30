@@ -50,7 +50,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">Services</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Courses</a></li>
+                        <li><a href="/courses">Courses</a></li>
                         <li><a href="/quiz">Quizzes</a></li>
                     </ul>
                 </li>
@@ -60,16 +60,16 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">Account</a>
                     <ul class="dropdown-menu">
+                        <li><a href="/manage-courses">My Courses</a></li>
                         <li><a href="/logout">logout</a></li>
                         <li><a href="/users/{{ auth()->user()->id }}/profile">Edit</a></li>
                     </ul>
                 </li>
             @else
-               
-                 <li class="dropdown">
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle">Services</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Courses</a></li>
+                        <li><a href="/courses">Courses</a></li>
                         <li><a href="/quiz">Quizzes</a></li>
                     </ul>
                 </li>
@@ -124,6 +124,12 @@
 
         <!-- Render the main content slot -->
         {{ $slot }}
+
+        <!-- Scroll up button -->
+        <a x-data="scrollButton()" @click="scrollToTop" x-show="showScrollButton"
+            class="fixed bottom-12 right-12 bg-gray-500 text-white p-6 rounded-full shadow">
+            <i class="fas fa-arrow-up"></i>
+        </a>
 
     </main>
 

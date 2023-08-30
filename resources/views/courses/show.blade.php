@@ -174,6 +174,9 @@
                 <p>{!! nl2br(e($course->content)) !!}</p>
             </div>
 
+            <!-- Display Chatroom Container -->
+            <x-chatroom-container :course="$course" />
+
             <div>
                 <!-- Chatroom Link -->
                 <a href="{{ route('chatroom.show') }}" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
