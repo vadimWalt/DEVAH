@@ -45,7 +45,8 @@ class DatabaseSeeder extends Seeder
             'isAdmin' => '1',
             'email' => 'admin@devah.lu',
             'password' => 'devah',
-            'profile_picture' => 'profilePictres/admin.jpg',
+            'role' => 'teacher',
+            'profile_picture' => 'profilePictures/admin.jpg',
         ]);
 
         // Create 2 courses associated with the user

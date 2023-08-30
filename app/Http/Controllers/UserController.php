@@ -33,7 +33,7 @@ class UserController extends Controller
         // make sure the image is here before saving it
         if ($request->hasFile('profile_picture')) {
             // let's break this down together
-            $formFields['profile_picture'] = $request->file('profile_picture')->store('profilePictures', 'public');
+            $formFields['profile_picture'] = $request->file('profile_picture')->store('images/profilePictures', 'public');
             // $formFields['logo'] >> this will add a 'logo' key to our array of data from the form
             // $request->file('logo') >> retrieve the image file that has been uploaded (could be any file really)
             // store('logos', 'public') > the file will be stored in 
@@ -97,9 +97,10 @@ class UserController extends Controller
         return back()->withErrors(['email' => 'Invalid credentials...']);
         // we don't write the exact error message to prevent people spamming random emails to find out which ones are used
     }
-    public function edit(User $user)
+    public function edit()
     {
-        return view('users.edit', ['user' => $user]);
+        $user = auth()->user(); // Retrieve the logged-in user's data
+        return view('users.edit')->with('user', $user);
     }
 
     public function update(Request $request, User $user)
@@ -115,7 +116,7 @@ class UserController extends Controller
         ]);
 
         if ($request->hasFile('profile_picture')) {
-            $formFields['profile_picture'] = $request->file('profile_picture')->store('profilePictures', 'public');
+            $formFields['profile_picture'] = $request->file('profile_picture')->store('images/profilePictures', 'public');
         }
 
         // update() changes the data in the table for us

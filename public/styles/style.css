@@ -154,6 +154,9 @@
   .burger-menu {
     display: block; /* Show burger menu icon on mobile */
   }
+  #welcome{
+    display: none;
+  }
 }
 /*  BREAKPOINT FOR TABLEt VIEW */
 @media only screen and (min-width: 721px) and (max-width: 1080px) {

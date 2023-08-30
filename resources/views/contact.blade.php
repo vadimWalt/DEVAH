@@ -59,13 +59,14 @@
                     Send
                 </button>
             </div>
-
-            <div class="mt-8">
-                <p>
-                    Do you want to register instead?
-                    <a href="/register" class="text-laravel">Register</a>
-                </p>
-            </div>
+            @unless (auth()->user())
+                <div class="mt-8">
+                    <p>
+                        Do you want to register instead?
+                        <a href="/register" class="text-laravel">Register</a>
+                    </p>
+                </div>
+            @endunless
         </form>
     </div>
 </x-layout>

@@ -45,8 +45,9 @@
             @auth
 
 
-                <li class="text-blue-200 flex">Welcome, {{ auth()->user()->name }} <span class="font-bold uppercase">
-
+                <li id="welcome" class="text-blue-200 flex">Welcome, {{ auth()->user()->name }} <span class="font-bold uppercase"> </li>
+                <li id="welcome" ><img src="{{ asset('storage/' . auth()->user()->profile_picture) }}" alt="pfp" width="45px"
+                        height="45px" style="border-radius: 50%; border:2px solid white; padding:2px; margin:2px"></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">Services</a>
                     <ul class="dropdown-menu">

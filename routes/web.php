@@ -30,10 +30,10 @@ Route::get('/', [CourseController::class, 'welcome'])->name('welcome');
 */
 
 // List all courses
-Route::get('/courses', [CourseController::class, 'index']);
+Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
 
 // Create new course
-Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth')->name('courses.create'); 
+Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth')->name('courses.create');
 
 // Store new course
 Route::post('/courses', [CourseController::class, 'store'])->middleware('auth');
@@ -52,6 +52,17 @@ Route::get('/manage-courses', [CourseController::class, 'manageCourses'])->middl
 
 // Single course
 Route::get('/courses/{course}', [CourseController::class, 'show'])->name('courses.show');
+
+
+
+/********  ENROLL TO A COURSE AS STUDENT ********/
+
+// Enroll course form
+Route::post('/courses/{course}/enroll', [CourseController::class, 'enroll'])->middleware('auth')->name('courses.enroll');
+
+// Un-enroll course form
+Route::post('/courses/{course}/unenroll', [CourseController::class, 'unenroll'])->middleware('auth')->name('courses.unenroll');
+
 
 /*
 |--------------------------------------------------------------------------
@@ -111,9 +122,9 @@ Route::post('/chatMessage', [ChatMessageController::class, 'store'])->middleware
 |--------------------------------------------------------------------------
 */
 
-Route::get("/quiz",[QuizzController::class,"index"]);
+Route::get("/quiz", [QuizzController::class, "index"]);
 Route::get("/quiz/display", [QuizzController::class, "displayQuizz"]);
-Route::post("/quiz/results",[QuizzController::class,"displayCorrection"]);
+Route::post("/quiz/results", [QuizzController::class, "displayCorrection"]);
 
 /*
 |--------------------------------------------------------------------------
