@@ -3,7 +3,7 @@
     <div class="container mx-auto mt-8 p-8">
         <div class="flex flex-col items-center space-y-4">
             <!-- Course Picture -->
-            <img src="{{ $course->picture }}" alt="{{ $course->title }}"
+            <img src="{{ asset('storage/' . $course->picture) }}" alt="{{ $course->title }}"
                 class="w-64 h-64 object-cover rounded-lg shadow-lg">
 
             <!-- Course Title -->

@@ -1,6 +1,6 @@
 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
     <!-- Course Picture -->
-    <img src="{{ $course->picture }}" alt="{{ $course->title }}"
+    <img src="{{ $course->picture ? asset('storage/' . $course->picture) : asset('images/courses/no-image.jpg')}}" alt="{{ $course->title }}"
          class="w-full h-48 object-cover">
     
     <div class="p-4">
