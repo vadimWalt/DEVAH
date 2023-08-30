@@ -72,10 +72,27 @@
     min-width: 120px;
     padding: 10px;
     border-radius: 15px;
+
+    li a{
+        white-space: nowrap;
+    }
+    li:hover {
+        scale: 0.98;
+        transition: 0.5s;
+
+        a {
+            --tw-text-opacity: 1;
+            color: rgb(191 219 254 / var(--tw-text-opacity));
+        }
+    }
 }
 
 .dropdown:hover .dropdown-menu {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    // text-align: center;
 }
 
 /* Style for the burger menu */

@@ -68,9 +68,23 @@
   padding: 10px;
   border-radius: 15px;
 }
+.dropdown-menu li a {
+  white-space: nowrap;
+}
+.dropdown-menu li:hover {
+  scale: 0.98;
+  transition: 0.5s;
+}
+.dropdown-menu li:hover a {
+  --tw-text-opacity: 1;
+  color: rgb(191 219 254/var(--tw-text-opacity));
+}
 
 .dropdown:hover .dropdown-menu {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
 }
 
 /* Style for the burger menu */
@@ -153,24 +167,3 @@
 @media only screen and (min-width: 1081px) {
   /* ... Your desktop styles ... */
 }/*# sourceMappingURL=style.css.map */
-.chat-link {
-    background-color: red; /* Background color */
-    color: white; /* Text color */
-    padding: 10px 20px; /* Adjust padding as needed */
-    border-radius: 5px; /* Rounded corners */
-    text-decoration: none; /* Remove underline from link */
-    border-radius: 100px;
-}
-
-/* Change link color on hover */
-.chat-link:hover {
-    background-color: darkred; /* Change background color on hover */
-    color: white; /* Text color on hover */
-}
-
-.rounded-custom {
-    border-radius: 100px;
-}
-
-
-
