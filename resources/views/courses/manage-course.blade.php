@@ -16,8 +16,11 @@
                     @foreach ($myCourses as $course)
                         <tr class="border-gray-300">
                             <!-- Course title and link -->
-                            <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                                <a href="/courses/{{ $course->id }}">
+                            <td class="px-4 py-8 border-t border-b border-gray-300 text-lg"><a
+                                    href="/courses/{{ $course->id }}" class="text-center">
+                                    <img src="{{ $course->picture ? asset('storage/' . $course->picture) : asset('storage/images/courses/JRFN2xWs83F7HMI72e0qdrEdWZo1M6gss8RqQwpd.jpg') }}"
+                                        alt="{{ $course->title }}" class="w-25 h-25 object-cover rounded-lg shadow-lg">
+
                                     {{ $course->title }}
                                 </a>
                             </td>
@@ -64,8 +67,11 @@
                     @foreach ($courses as $course)
                         <tr class="border-gray-300">
                             <!-- Course title and link -->
-                            <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                                <a href="/courses/{{ $course->id }}">
+                            <td class="px-4 py-8 border-t border-b border-gray-300 text-lg"><a
+                                    href="/courses/{{ $course->id }}" class="text-center">
+                                    <img src="{{ $course->picture ? asset('storage/' . $course->picture) : asset('storage/images/courses/JRFN2xWs83F7HMI72e0qdrEdWZo1M6gss8RqQwpd.jpg') }}"
+                                        alt="{{ $course->title }}" class="w-25 h-25 object-cover rounded-lg shadow-lg">
+
                                     {{ $course->title }}
                                 </a>
                             </td>

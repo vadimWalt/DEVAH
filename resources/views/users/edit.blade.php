@@ -4,18 +4,18 @@
             <h2 class="text-2xl font-bold uppercase mb-1">
                 Manage my profile
             </h2>
-            <p class="mb-4">Change my profile preferences</p>
         </header>
-        <form action="/users" method="POST" enctype="multipart/form-data">
-            @auth
+        @auth
+            <form action="/users/{{ $user->id }}" method="POST" enctype="multipart/form-data">
                 @csrf {{-- don't forget ;) --}}
-
+                @method('PUT')
                 {{-- user role --}}
                 <div class="mb-6">
                     <h4 class="text-l font-bold uppercase mb-1">Role:</h4>
 
                     <label class="inline-block text-lg mb-2">{{ $user->role }}</label>
                 </div>
+                
                 {{-- user name --}}
                 <div class="mb-6">
                     <label for="name" class="inline-block text-lg mb-2">
@@ -39,8 +39,8 @@
                 {{-- select a new picture --}}
                 <div class="mb-6">
                     <label for="profile_picture" class="inline-block text-lg mb-2">Change Picture</label>
-                    <input type="file" class="border border-gray-200 rounded p-2 w-full"
-                        name="profile_picture" value="{{ $user->profile_picture }}" />
+                    <input type="file" class="border border-gray-200 rounded p-2 w-full" name="profile_picture"
+                        value="{{ $user->profile_picture }}" />
                     @error('profile_picture')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror

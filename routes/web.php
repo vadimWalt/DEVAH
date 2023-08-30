@@ -81,10 +81,10 @@ Route::post('/users', [UserController::class, 'store']);
 // Show edit user form
 Route::get('/users/{id}/profile', [UserController::class, 'edit'])->middleware('auth');
 
-// Update listing
-Route::put('/users/{id}', [UserController::class, 'update'])->middleware('auth');
+// Update user
+Route::put('/users/{id}', [UserController::class, 'updateUser'])->middleware('auth');
 
-// Delete listing
+// Delete user
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->middleware('auth');
 
 // Log user out
@@ -153,16 +153,3 @@ here's the route to for the chatroom
 */
 
 Route::get('/chatroom', [ChatRoomController::class, 'show'])->name('chatroom.show');
-
-
-
-/*
-Naming conventions
-- index = show all listings
-- show = show one listing
-- create = show form to create new listing
-- store = store new listing in the DB (on create form submit)
-- edit = show form to edit listing
-- update = update listing in DB (on edit form submit)
-- destroy = delete listing in DB
-*/

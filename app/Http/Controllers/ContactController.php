@@ -7,6 +7,7 @@ use App\Mail\ContactFormMail;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Validation\Rule;
 
 class ContactController extends Controller
 {
@@ -22,6 +23,7 @@ class ContactController extends Controller
             'email' => 'required|email',
             'subject' => 'required|min:5',
             'message' => 'required|min:5',
+            'g-recaptcha-response' => ['required', 'captcha'], // Add the CAPTCHA validation rule
         ]);
 
         $name = $request->input('name');

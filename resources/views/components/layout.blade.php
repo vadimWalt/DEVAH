@@ -146,6 +146,8 @@
     </footer>
 </body>
 
+{{-- CAPTCHA SCRIPT FROM GOOGLE --}}
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
     // function that manage a smooth come back to the top when you click on the top button

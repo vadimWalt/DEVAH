@@ -46,8 +46,9 @@
     <body class="bg-gray-100 font-sans">
         <div class="container mx-auto mt-8 p-8 bg-white rounded-lg shadow-md">
             <div class="flex flex-col items-center space-y-4">
-                <img src="{{ $course->picture }}" alt="{{ $course->title }}"
-                    class="w-64 h-64 object-cover rounded-lg shadow-lg">
+
+                <img src="{{ $course->picture ? asset('storage/' . $course->picture) : asset('storage/images/courses/JRFN2xWs83F7HMI72e0qdrEdWZo1M6gss8RqQwpd.jpg') }}"
+                    alt="{{ $course->title }}" class="w-64 h-64 object-cover rounded-lg shadow-lg">
 
                 <h2 class="text-3xl font-semibold">{{ $course->title }}</h2>
 
@@ -88,12 +89,26 @@
                         </form>
                     @endif
                     @if (Auth::user()->role == 'student')
-                        <form method="POST" action="{{ route('courses.enroll', ['course' => $course->id]) }}">
-                            @csrf
-                            <button class="mt-2 text-yellow-600 hover:underline">
-                                <i class="fa-solid fa-address-card"></i> Enroll
-                            </button>
-                        </form>
+                        @php
+                            $isEnrolled = auth()
+                                ->user()
+                                ->courses->contains($course->id);
+                        @endphp
+                        @if ($isEnrolled)
+                            <form method="POST" action="{{ route('courses.unenroll', ['course' => $course->id]) }}">
+                                @csrf
+                                <button class="text-red-500">
+                                    <i class="fa-solid fa-trash"></i> Un-enroll
+                                </button>
+                            </form>
+                        @else
+                            <form method="POST" action="{{ route('courses.enroll', ['course' => $course->id]) }}">
+                                @csrf
+                                <button class="mt-2 text-yellow-600 hover:underline">
+                                    <i class="fa-solid fa-address-card"></i> Enroll
+                                </button>
+                            </form>
+                        @endif
                     @endif
                 @endauth
             </div>

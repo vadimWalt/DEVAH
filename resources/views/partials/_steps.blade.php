@@ -14,7 +14,7 @@
             <div class="bg-blue-300 rounded-lg shadow-lg p-6 hover:bg-white cursor-default">
                 <h3 class="text-lg font-semibold mb-2">Step 2</h3>
                 <!-- Description of step 2 -->
-                <p class="text-gray-800">Enroll in the course and gain access to high-quality video lessons, interactive exercises, and more.</p>
+                <p class="text-gray-800">Enroll in the course and gain access to high-quality lessons, interactive exercises, and more.</p>
             </div>
             <!-- Step 3 -->
             <div class="bg-blue-100 rounded-lg shadow-lg p-6 hover:bg-white cursor-default">
