@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class ChatMessageController extends Controller
 {
+    // Store new chatMessage in DB
     public function index()
     {
         $chatMessages = ChatMessage::all(); // Fetch all chat messages from the database
@@ -25,14 +26,16 @@ class ChatMessageController extends Controller
     {
         $formFields = $request->validate([
             'chatMessage' => 'required',
+            'chatroom_id' => 'required|exists:chat_rooms,id', // Make sure the provided chatroom_id exists in the chat_rooms table
         ]);
 
-        // This will add the logged-in user's ID to the new message
+        // Add the logged in user id to the new message
         $formFields['user_id'] = auth()->id();
 
+        // Create the new chat message
         ChatMessage::create($formFields);
 
-        // Redirect back to the chat messages index page
-        return redirect()->route('chatmessage.index');
+        // Redirect back to the course's show page with a message
+        return redirect()->back()->with('success', 'Message sent successfully.');
     }
 }

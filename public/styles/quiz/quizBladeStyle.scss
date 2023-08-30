@@ -1,0 +1,92 @@
+/* Top Quiz section */
+.topQuiz {
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: rgb(19, 170, 173);
+    font-size: large;
+    padding: 20px;
+
+    h2 {
+        b {
+            font-weight: bold;
+            color: cyan;
+            font-size: 1.2em;
+        }
+    }
+
+    h3 {
+        font-weight: bold;
+    }
+}
+
+
+
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.question-container {
+    background-color: lightblue;
+    border: 3px solid white;
+    margin: 20px;
+    border-radius: 15px;
+    padding: 15px 30px;
+    width: 95%;
+    box-shadow: 0 0 5px 5px lightgray;
+
+    h2 {
+        font-weight: bold;
+        font-size: 1.1em;
+        margin-bottom: 10px;
+    }
+
+    .answer-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        .answer{
+            display: flex;
+            gap: 5px;
+            flex-direction: row;
+        }
+
+        .answer.good {
+            font-weight: bold;
+            color: green;
+        }
+
+        .answer.bad {
+            font-weight: bold;
+            color: red;
+        }
+    }
+}
+
+button {
+    border: 1px solid gray;
+    border-radius: 15px;
+    padding: 15px 30px;
+    margin: 20px;
+    background-color: lightblue;
+    color: white;
+    align-self: flex-end;
+}
+
+// BREAKPOINT FOR TABLEt VIEW
+@media only screen and (min-width: 720px) {
+    form {
+        width: 80%;
+    }
+}
+
+// BREAKPOINT FOR desktop VIEW
+@media only screen and (min-width: 1080px) {
+    form {
+        width: 60%;
+    }
+}

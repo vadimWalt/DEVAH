@@ -4,18 +4,14 @@
         <!-- Check if there are no courses -->
         @if (count($courses) == 0)
             <p>No courses found</p>
-        <!-- Loop through each course and display a course list component -->
+            <!-- Loop through each course and display a course list component -->
         @else
-            @foreach ($courses as $course)
-                <x-course-list :courses="$courses" />
-            @endforeach
+            <x-course-list :courses="$courses" />
         @endif
     </div>
-    
-    {{-- <div class="mt-6 p-4">
-        {{$courses->links()}}
-    </div> --}}
-    
-    </x-layout> 
 
-  
+    <div class="mt-6 p-4">
+        {{ $courses->links() }}
+    </div>
+
+</x-layout>
