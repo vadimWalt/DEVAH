@@ -93,7 +93,7 @@
                 </button>
             </form>
         @else
-            <h1>YOU ARE NOT LOGGED IN !</h1>
+            <h1>YOU ARE NOT SUPPOSED TO BE HERE !</h1>
         @endauth
     </div>
 </x-layout>

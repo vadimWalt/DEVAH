@@ -70,7 +70,7 @@
 
                 <!-- ... (other content) ... -->
 
-                
+
 
                 @auth
                     @if (Auth::user()->id === $course->teacher_id)
@@ -84,6 +84,14 @@
                             @method('DELETE')
                             <button type="submit" class="bg-red-500 text-white rounded py-2 px-4 hover:bg-gray">
                                 Delete Course
+                            </button>
+                        </form>
+                    @endif
+                    @if (Auth::user()->role == 'student')
+                        <form method="POST" action="{{ route('courses.enroll', ['course' => $course->id]) }}">
+                            @csrf
+                            <button class="mt-2 text-yellow-600 hover:underline">
+                                <i class="fa-solid fa-address-card"></i> Enroll
                             </button>
                         </form>
                     @endif

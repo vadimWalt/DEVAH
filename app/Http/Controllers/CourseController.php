@@ -88,7 +88,10 @@ class CourseController extends Controller
     {
         $user = Auth::user();
         $myCourses = Course::where('teacher_id', $user->id)->get();
-        return view('courses.manage-course')->with('myCourses', $myCourses);
+
+        // Manage student courses
+
+        return view('courses.manage-course')->with('myCourses', $myCourses)->with('courses', auth()->user()->courses()->get());
     }
 
 
@@ -128,7 +131,6 @@ class CourseController extends Controller
     public function enroll(Request $request, Course $course)
     {
         auth()->user()->courses()->attach($course->id);
-
         return redirect()->back()->with('message', 'Enrolled successfully!');
     }
 
@@ -137,7 +139,6 @@ class CourseController extends Controller
     {
         // Detach the currently authenticated user from the course
         auth()->user()->courses()->detach($course->id);
-    
         return redirect()->back()->with('message', 'Unenrolled successfully!');
     }
 }

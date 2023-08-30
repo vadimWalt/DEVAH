@@ -58,10 +58,10 @@
     @else
         <table class="w-full table-auto rounded-sm">
             <tbody>
-                <!-- Check if there are myCourses available -->
-                @unless ($myCourses->isEmpty())
+                <!-- Check if there are courses available -->
+                @unless ($courses->isEmpty())
                     <!-- Loop through each teacher course -->
-                    @foreach ($myCourses as $course)
+                    @foreach ($courses as $course)
                         <tr class="border-gray-300">
                             <!-- Course title and link -->
                             <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
@@ -77,7 +77,6 @@
                                         <i class="fa-solid fa-trash"></i> Un-enroll
                                     </button>
                                 </form>
-
                             </td>
                         </tr>
                     @endforeach

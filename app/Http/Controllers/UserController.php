@@ -133,11 +133,5 @@ class UserController extends Controller
         return redirect('/')->with('message', 'User deleted successfully');
     }
 
-    // Manage courses
-    public function manage()
-    {
-        return view('courses.manage', ['courses' => auth()->user()->courses()->get()]);
-        // 'courses' will contain all courses created by the logged in user
-        // the relationship between the two models makes this possible
-    }
+
 }

@@ -32,7 +32,7 @@
 
 <body>
 
-    <nav id="nav" class="navbar">
+    <nav id="nav" class="navbar p-6">
         <div class="logo">
             <img src="{{ asset('images/favicon.png') }}" alt="">
             <a href="/">DEVAH</a>
@@ -131,10 +131,7 @@
         {{ $slot }}
 
         <!-- Scroll up button -->
-        <a x-data="scrollButton()" @click="scrollToTop" x-show="showScrollButton"
-            class="fixed bottom-12 right-12 bg-gray-500 text-white p-6 rounded-full shadow">
-            <i class="fas fa-arrow-up"></i>
-        </a>
+        
 
     </main>
 
