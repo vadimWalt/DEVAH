@@ -106,8 +106,8 @@ class UserController extends Controller
     {
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
-            'role' => ['required'],
-            'profile_picture' => 'required',
+            'role' => 'required',
+            'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'city' => 'required',
             'zip_code' => ['required', 'regex:/^[0-9]{4}$/'],
             'street' => ['required', 'regex:/^[0-9]{2}$/'],

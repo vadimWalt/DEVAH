@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
         integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{asset('styles/style.css') }}"> <!-- Use asset() to generate correct URL -->
+    <link rel="stylesheet" href="{{ asset('styles/style.css') }}"> <!-- Use asset() to generate correct URL -->
     {{-- cdn for alpine use for flash message for example --}}
     <script src="//unpkg.com/alpinejs" defer></script>
 
@@ -61,8 +61,13 @@
                     <a href="#" class="dropdown-toggle">Account</a>
                     <ul class="dropdown-menu">
                         <li><a href="/manage-courses">My Courses</a></li>
-                        <li><a href="/logout">logout</a></li>
                         <li><a href="/users/{{ auth()->user()->id }}/profile">Edit</a></li>
+                        <li>
+                            <form class="inline" method="POST" action="/logout">
+                                @csrf
+                                <button> Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </li>
             @else
@@ -75,8 +80,7 @@
                 </li>
 
                 <li><a href="/contact">Contact</a></li>
-                <li><a href="aboutus">About us</a></li>
-
+                <li><a href="/aboutus">About us</a></li>
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">Account</a>
