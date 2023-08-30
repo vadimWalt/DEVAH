@@ -128,7 +128,7 @@ class UserController extends Controller
         // update() changes the data in the table for us
         $user->save($formFields);
 
-        return redirect('/')->with('message', 'Profile updated successfully');
+        return redirect('/users/' . $user->id)->with('message', 'Profile updated successfully');
     }
 
     public function destroy($id)
