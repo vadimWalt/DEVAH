@@ -22,7 +22,7 @@ class CourseController extends Controller
     // Display all courses
     public function index()
     {
-        $courses = Course::paginate(3);
+        $courses = Course::paginate(4);
         return view('courses.index')->with('courses', $courses);
     }
 

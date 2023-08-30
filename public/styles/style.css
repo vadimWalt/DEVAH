@@ -157,6 +157,10 @@
   #welcome{
     display: none;
   }
+  #course-card{
+    display: flex;
+    flex-direction: column;
+  }
 }
 /*  BREAKPOINT FOR TABLEt VIEW */
 @media only screen and (min-width: 721px) and (max-width: 1080px) {
@@ -165,8 +169,16 @@
     flex-direction: row;
     gap: 100px;
   }
+  #course-card{
+    display: flex;
+    flex-direction: column;
+  }
 }
 /* BREAKPOINT FOR desktop VIEW */
 @media only screen and (min-width: 1081px) {
   /* ... Your desktop styles ... */
+  #course-card{
+    display: flex;
+    flex-direction: column;
+  }
 }/*# sourceMappingURL=style.css.map */

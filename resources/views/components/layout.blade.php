@@ -46,8 +46,8 @@
 
 
                 <li id="welcome" class="text-blue-200 flex">Welcome, {{ auth()->user()->name }} <span class="font-bold uppercase"> </li>
-                <li id="welcome" ><img src="{{ asset('storage/' . auth()->user()->profile_picture) }}" alt="pfp" width="45px"
-                        height="45px" style="border-radius: 50%; border:2px solid white; padding:2px; margin:2px"></li>
+                <li id="welcome" ><a href="/users/{{ auth()->user()->id }}/profile"><img src="{{ asset('storage/' . auth()->user()->profile_picture) }}" alt="pfp" width="45px"
+                        height="45px" style="border-radius: 50%; border:2px solid white; padding:2px; margin:2px"></a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">Services</a>
                     <ul class="dropdown-menu">
@@ -111,7 +111,7 @@
 
 
     <x-flash-message />
-    <main class="min-h-screen mb-0 mt-0">
+    <main class="min-h-screen mb-0 mt-0 text-center">
 
         <!-- Display success message if available -->
         @if (session()->has('success'))
