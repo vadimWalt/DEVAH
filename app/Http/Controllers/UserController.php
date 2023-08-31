@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
+
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -27,13 +29,14 @@ class UserController extends Controller
             'profile_picture' => ['required', Rule::imageFile()],
             'city' => 'required',
             'zip_code' => ['required', 'regex:/^[0-9]{4,}$/'],
-            'street' => ['required', 'regex:/^[0-9]{2,}$/'],
+            'street' => ['required', 'regex:/^[A-Za-z0-9\s]+$/'],
             'country' => 'required',
+            'g-recaptcha-response' => ['required', 'captcha'], // Add the CAPTCHA validation rule
         ]);
         // make sure the image is here before saving it
         if ($request->hasFile('profile_picture')) {
             // let's break this down together
-            $formFields['profile_picture'] = $request->file('profile_picture')->store('profilePictures', 'public');
+            $formFields['profile_picture'] = $request->file('profile_picture')->store('images/profilePictures', 'public');
             // $formFields['logo'] >> this will add a 'logo' key to our array of data from the form
             // $request->file('logo') >> retrieve the image file that has been uploaded (could be any file really)
             // store('logos', 'public') > the file will be stored in 
@@ -97,31 +100,35 @@ class UserController extends Controller
         return back()->withErrors(['email' => 'Invalid credentials...']);
         // we don't write the exact error message to prevent people spamming random emails to find out which ones are used
     }
-    public function edit(User $user)
+    public function edit($id)
     {
-        return view('users.edit', ['user' => $user]);
+        $user = User::findOrFail($id); // Retrieve the logged-in user's data
+        return view('users.edit')->with('user', $user);
     }
 
-    public function update(Request $request, User $user)
+    public function updateUser(Request $request, $id)
     {
+        Log::info('updateUser method called');
+        $user = User::findOrFail($id);
+        Log::info($user);
         $formFields = $request->validate([
             'name' => ['required', 'min:3'],
             'role' => 'required',
-            'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'profile_picture' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
             'city' => 'required',
-            'zip_code' => ['required', 'regex:/^[0-9]{4}$/'],
-            'street' => ['required', 'regex:/^[0-9]{2}$/'],
+            'zip_code' => ['required', 'regex:/^[0-9]{4,}$/'],
+            'street' => ['required', 'regex:/^[A-Za-z0-9\s]+$/'],
             'country' => 'required',
         ]);
 
         if ($request->hasFile('profile_picture')) {
-            $formFields['profile_picture'] = $request->file('profile_picture')->store('profilePictures', 'public');
+            $formFields['profile_picture'] = $request->file('profile_picture')->store('images/profilePictures', 'public');
         }
 
         // update() changes the data in the table for us
-        $user->update($formFields);
+        $user->save($formFields);
 
-        return redirect('/users/' . $user->id)->with('message', 'Profile updated successfully');
+        return redirect('/')->with('message', 'Profile updated successfully');
     }
 
     public function destroy($id)
@@ -130,13 +137,5 @@ class UserController extends Controller
         $user->delete();
         Auth::logout();
         return redirect('/')->with('message', 'User deleted successfully');
-    }
-
-    // Manage courses
-    public function manage()
-    {
-        return view('courses.manage', ['courses' => auth()->user()->courses()->get()]);
-        // 'courses' will contain all courses created by the logged in user
-        // the relationship between the two models makes this possible
     }
 }

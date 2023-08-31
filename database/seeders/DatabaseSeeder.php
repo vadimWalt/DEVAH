@@ -18,39 +18,74 @@ class DatabaseSeeder extends Seeder
     {
 
         // Create a teacher
-        $teacher = User::factory()->create(['role' => 'teacher']);
+        // $teacher = User::factory()->create(['role' => 'teacher']);
 
         // Create 9 students
-        $students = User::factory(9)->create(['role' => 'student']);
+        // $students = User::factory(9)->create(['role' => 'student']);
 
         // Create a course owned by the teacher
-        $course = Course::factory()->create(['teacher_id' => $teacher->id]);
+        // $course = Course::factory()->create(['teacher_id' => $teacher->id]);
 
         // Link students to the course
-        $course->users()->attach($students);
+        // $course->users()->attach($students);
 
         // Create a chatroom and a chat message for each student
 
-        $chatroom = ChatRoom::factory()->create(['course_id' => $course->id]);
+        /*
+         $chatroom = ChatRoom::factory()->create(['course_id' => $course->id]);
 
         foreach ($students as $student) {
             ChatMessage::factory()->create([
                 'chat_rooms_id' => $chatroom->id,
                 'user_id' => $student->id,
             ]);
-        }
+        } 
+        */
         // Create a user named John Doe
-        $user = User::factory()->create([
+        // Create a user 
+        $teacher = User::factory()->create([
             'name' => 'DEVAH',
             'isAdmin' => '1',
             'email' => 'admin@devah.lu',
             'password' => 'devah',
-            'profile_picture' => 'profilePictres/admin.jpg',
+            'role' => 'teacher',
+            'profile_picture' => 'profilePictures/teacher.jpg',
         ]);
 
-        // Create 2 courses associated with the user
-        Course::factory(2)->create([
-            'teacher_id' => $user->id
+        $student = User::factory()->create([
+            'name' => 'student',
+            'isAdmin' => '1',
+            'email' => 'student@devah.lu',
+            'password' => 'student',
+            'role' => 'student',
+            'profile_picture' => 'profilePictures/student.jpg',
         ]);
+
+        // Course details
+        $courseDetails = [
+            [
+                'title' => 'Introduction to Programming',
+                'description' => 'Learn the basics of programming and coding.',
+                'content' => 'This course covers programming concepts...',
+            ],
+            [
+                'title' => 'Web Development Fundamentals',
+                'description' => 'Explore the foundations of web development.',
+                'content' => 'In this course, you will learn about HTML...',
+            ],
+            // Add more course details here
+        ];
+
+        foreach ($courseDetails as $courseDetail) {
+            $course = Course::factory()->create([
+                'teacher_id' => $teacher->id,
+                'title' => $courseDetail['title'],
+                'description' => $courseDetail['description'],
+                'content' => $courseDetail['content'],
+            ]);
+
+            // Link students to the course
+            $course->users()->attach($student);
+        }
     }
 }

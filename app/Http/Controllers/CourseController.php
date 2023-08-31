@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\ChatRoom;
+use App\Models\User;
 use App\Models\Course;
-use Illuminate\Contracts\Session\Session;
+use App\Models\ChatRoom;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Contracts\Session\Session;
 
 class CourseController extends Controller
 {
@@ -21,7 +22,7 @@ class CourseController extends Controller
     // Display all courses
     public function index()
     {
-        $courses = Course::paginate(3);
+        $courses = Course::paginate(4);
         return view('courses.index')->with('courses', $courses);
     }
 
@@ -86,8 +87,11 @@ class CourseController extends Controller
     public function manageCourses()
     {
         $user = Auth::user();
-        $teacherCourses = Course::where('teacher_id', $user->id)->get();
-        return view('courses.manage-course')->with('teacherCourses', $teacherCourses);
+        $myCourses = Course::where('teacher_id', $user->id)->get();
+
+        // Manage student courses
+
+        return view('courses.manage-course')->with('myCourses', $myCourses)->with('courses', auth()->user()->courses()->get());
     }
 
 
@@ -122,5 +126,19 @@ class CourseController extends Controller
     {
         $course->delete();
         return redirect('/courses')->with('success', 'Course deleted successfully!');
+    }
+
+    public function enroll(Request $request, Course $course)
+    {
+        auth()->user()->courses()->attach($course->id);
+        return redirect()->back()->with('message', 'Enrolled successfully!');
+    }
+
+
+    public function unenroll(Request $request, Course $course)
+    {
+        // Detach the currently authenticated user from the course
+        auth()->user()->courses()->detach($course->id);
+        return redirect()->back()->with('message', 'Unenrolled successfully!');
     }
 }

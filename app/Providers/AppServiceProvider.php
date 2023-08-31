@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
+use ReCaptcha\ReCaptcha;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,5 +24,11 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Model::unguard();
+        Validator::extend('captcha', function ($attribute, $value, $parameters, $validator) {
+            $recaptcha = new ReCaptcha(config('services.recaptcha.secret_key'));
+            $response = $recaptcha->verify($value);
+    
+            return $response->isSuccess();
+        });
     }
 }
