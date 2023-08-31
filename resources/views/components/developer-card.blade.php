@@ -210,7 +210,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{{ asset('/images/student.jpg') }}" class="card-img-top" alt="picture">
+                    <img src="{{ asset('/images/hamidi.jpg') }}" class="card-img-top" alt="picture">
                     <div class="card-body">
                         <h5 class="card-title">Hamidi</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Full Stack Web Developer</h6>
@@ -223,7 +223,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{{ asset('/images/vadimSquirrel.jpg') }}" class="card-img-top" alt="picture">
+                    <img src="{{ asset('/images/vadim.jpg') }}" class="card-img-top" alt="picture">
                     <div class="card-body">
                         <h5 class="card-title">Vadim</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Full Stack Web Developer</h6>
