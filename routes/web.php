@@ -8,6 +8,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ChatMessageController;
 use App\Http\Controllers\ChatRoomController;
+use App\Http\Controllers\AboutUsController;
 
 
 /*
@@ -101,8 +102,8 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 |                       CONTACT US FORM AND POST ROUTES
 |--------------------------------------------------------------------------
 */
-Route::get('/contact', [ContactController::class, 'show']);
-Route::post('/contact', [ContactController::class, 'store']);
+Route::get('/contact', [ContactController::class, 'show'])->middleware("guest");
+Route::post('/contact', [ContactController::class, 'store'])->middleware("guest");
 
 
 
@@ -122,9 +123,9 @@ Route::post('/chatMessage', [ChatMessageController::class, 'store'])->middleware
 |--------------------------------------------------------------------------
 */
 
-Route::get("/quiz", [QuizzController::class, "index"]);
-Route::get("/quiz/display", [QuizzController::class, "displayQuizz"]);
-Route::post("/quiz/results", [QuizzController::class, "displayCorrection"]);
+Route::get("/quiz",[QuizzController::class,"index"])->middleware("guest");
+Route::get("/quiz/display", [QuizzController::class, "displayQuizz"])->middleware("guest");
+Route::post("/quiz/results",[QuizzController::class,"displayCorrection"])->middleware("guest");
 
 /*
 |--------------------------------------------------------------------------
@@ -143,13 +144,26 @@ Route::get('/aboutus', function () {
 here is the routes for the show chat messages */
 
 
-
 Route::get('/chatmessages', [ChatMessageController::class, 'index'])->name('chatmessage.index');
-Route::get('/chatmessages/create', [ChatMessageController::class, 'create'])->name('chatmessage.create');
-Route::post('/chatmessages', [ChatMessageController::class, 'store'])->name('chatmessage.store');
+Route::post('/message', [ChatMessageController::class, 'store']);
 
 /*
 here's the route to for the chatroom 
 */
 
-Route::get('/chatroom', [ChatRoomController::class, 'show'])->name('chatroom.show');
+// Route::get('/chatroom/{id}', [ChatRoomController::class, 'show']);
+Route::get('/chatroom/{chat_room_id}', [ChatRoomController::class, 'show'])->name('chatroom.show');
+
+
+
+
+/*
+Naming conventions
+- index = show all listings
+- show = show one listing
+- create = show form to create new listing
+- store = store new listing in the DB (on create form submit)
+- edit = show form to edit listing
+- update = update listing in DB (on edit form submit)
+- destroy = delete listing in DB
+*/

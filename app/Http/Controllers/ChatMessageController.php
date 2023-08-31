@@ -17,25 +17,23 @@ class ChatMessageController extends Controller
         return view('chatmessage.index', compact('chatMessages'));
     }
 
-    public function create()
-    {
-        return view('chatmessage.create');
-    }
 
-    public function store(Request $request)
+    public function store(Request $request, $chat_room_id)
     {
         $formFields = $request->validate([
             'chatMessage' => 'required',
             'chatroom_id' => 'required|exists:chat_rooms,id', // Make sure the provided chatroom_id exists in the chat_rooms table
         ]);
 
-        // Add the logged in user id to the new message
-        $formFields['user_id'] = auth()->id();
+        // Add the logged-in user's ID and the chat room ID to the new message
+        $formFields['user_id'] = auth()->user()->id;
+        $formFields['chat_room_id'] = $chat_room_id; // Retrieve chat room ID from URL
 
         // Create the new chat message
         ChatMessage::create($formFields);
 
-        // Redirect back to the course's show page with a message
-        return redirect()->back()->with('success', 'Message sent successfully.');
+        // Redirect back to the chat room
+        return redirect()->route('chatmessage.index', ['chat_room_id' => $chat_room_id]);
     }
+
 }
