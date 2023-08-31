@@ -30,7 +30,7 @@ Route::get('/', [CourseController::class, 'welcome'])->name('welcome');
 */
 
 // List all courses
-Route::get('/courses', [CourseController::class, 'index'])->name('courses.index');
+Route::get('/courses', [CourseController::class, 'index'])->name("courses.index");
 
 // Create new course
 Route::get('/courses/create', [CourseController::class, 'create'])->middleware('auth')->name('courses.create');
