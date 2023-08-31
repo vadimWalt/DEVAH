@@ -109,10 +109,6 @@ class UserController extends Controller
             'name' => ['required', 'min:3'],
             'role' => 'required',
             'profile_picture' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'city' => 'required',
-            'zip_code' => ['required', 'regex:/^[0-9]{4,}$/'],
-            'street' => ['required', 'regex:/^[A-Za-z0-9\s]+$/'],
-            'country' => 'required',
         ]);
 
         if ($request->hasFile('profile_picture')) {

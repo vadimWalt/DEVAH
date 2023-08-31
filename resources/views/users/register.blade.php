@@ -70,10 +70,10 @@
                 <label for="password_confirmation" class="inline-block text-lg mb-2">Confirm Password:</label>
                 <input type="password" class="border border-gray-200 rounded p-2 w-full" name="password_confirmation" />
             </div>
-            <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+            {{-- <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
             @error('g-recaptcha-response')
                 <p class="text-red-500">{{ $message }}</p>
-            @enderror
+            @enderror --}}
 
             {{-- submit button --}}
             <div class="mb-6">

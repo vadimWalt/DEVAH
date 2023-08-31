@@ -1,4 +1,4 @@
-<div {{ $attributes->merge(['class' => '/* add some classes for cards */']) }}>
+<div {{ $attributes->merge(['class' => '']) }}>
     <h2 class="text-2xl font-semibold mb-4">Chat Room</h2>
 
     @if ($course->chatroom)

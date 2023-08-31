@@ -25,6 +25,12 @@
 
             <!-- Course picture input -->
             <div class="mb-6">
+                <label for="profile_picture" class="inline-block text-lg mb-2">Current Profile Picture</label>
+                {{-- preview --}}
+                <img class="border border-gray-200 rounded p-2 w-200 h-200" src="{{ $course->picture ? asset('storage/' . $course->picture) : asset('storage/images/courses/JRFN2xWs83F7HMI72e0qdrEdWZo1M6gss8RqQwpd.jpg') }}"
+                    alt="Current Profile Picture"/>
+            </div>
+            <div class="mb-6">
                 <label for="picture" class="block text-lg font-medium mb-1">Picture:</label>
                 <input type="file" class="border border-gray-200 rounded-md p-2 w-full" name="picture"
                     value="{{ old('picture') }}">

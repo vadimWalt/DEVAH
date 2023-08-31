@@ -152,7 +152,7 @@ here's the route to for the chatroom
 */
 
 // Route::get('/chatroom/{id}', [ChatRoomController::class, 'show']);
-Route::get('/chatroom/{chat_room_id}', [ChatRoomController::class, 'show'])->name('chatroom.show');
+Route::get('/chatroom/{chat_rooms_id}', [ChatRoomController::class, 'show'])->name('chatroom.show');
 
 
 
