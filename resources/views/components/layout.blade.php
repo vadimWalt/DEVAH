@@ -57,7 +57,7 @@
                 </li>
 
                 <li><a href="/contact">Contact</a></li>
-                <li><a href="developer-card.blade.php">About us</a></li>
+                <li><a href="/aboutus">About us</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">Account</a>
                     <ul class="dropdown-menu">
@@ -111,7 +111,7 @@
 
 
     <x-flash-message />
-    <main class="min-h-screen mb-0 mt-0 text-center">
+    <main class="min-h-screen mb-0 mt-0">
 
         <!-- Display success message if available -->
         @if (session()->has('success'))

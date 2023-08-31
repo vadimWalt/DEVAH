@@ -210,14 +210,14 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card">
-                    <img src="{{ asset('/images/admin.jpg') }}" class="card-img-top" alt="picture">
+                    <img src="{{ asset('/images/student.jpg') }}" class="card-img-top" alt="picture">
                     <div class="card-body">
                         <h5 class="card-title">Hamidi</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Full Stack Web Developer</h6>
-                        <p class="card-text">Aspiring Junior Full Stack Web Developer with a passion for coding and
+                        <p class="card-text ">Aspiring Junior Full Stack Web Developer with a passion for coding and
                             a strong foundation in HTML, CSS, JavaScript, Angular, and Laravel.
                             Seeking an opportunity to contribute to dynamic web development
-                            projects and grow as a professional in a collaborative .</p>
+                            projects and grow as a professional in a collaborative.</p>
                     </div>
                 </div>
             </div>
@@ -227,7 +227,9 @@
                     <div class="card-body">
                         <h5 class="card-title">Vadim</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Full Stack Web Developer</h6>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                        <p class="card-text">Passionate Full-Stack Web Developer graduate with a background in factory
+                            and earthwork fields. Proficient in all aspects of web development, from HTML to database
+                            management. Eager to launch my career as a junior developer in a dynamic team.</p>
                     </div>
                 </div>
             </div>
@@ -250,7 +252,10 @@
                     <div class="card-body">
                         <h5 class="card-title">Azizullah</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Full Stack Web Developer</h6>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                        <p class="card-text">Results-driven professional with over 12 years of Sourcing and
+                            approximately 4 years of Market Development experience. Recently completed
+                            an intensive four-month Full Stack Web Development boot camp, gaining expertise in various
+                            web development technologies.</p>
                     </div>
                 </div>
             </div>
@@ -260,7 +265,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Dennis</h5>
                         <h6 class="card-subtitle mb-2 text-muted">Full Stack Web Developer</h6>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                        <p class="card-text">An adaptable professional with a proven career transformation form logistics to a dynamics and role as a junior dev. I have seamly transitioned to the world of technology. I bring a unique problem solving approach to software  development..</p>
                     </div>
                 </div>
             </div>

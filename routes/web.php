@@ -123,9 +123,9 @@ Route::post('/chatMessage', [ChatMessageController::class, 'store'])->middleware
 |--------------------------------------------------------------------------
 */
 
-Route::get("/quiz",[QuizzController::class,"index"])->middleware("guest");
-Route::get("/quiz/display", [QuizzController::class, "displayQuizz"])->middleware("guest");
-Route::post("/quiz/results",[QuizzController::class,"displayCorrection"])->middleware("guest");
+Route::get("/quiz",[QuizzController::class,"index"]);
+Route::get("/quiz/display", [QuizzController::class, "displayQuizz"]);
+Route::post("/quiz/results",[QuizzController::class,"displayCorrection"]);
 
 /*
 |--------------------------------------------------------------------------
