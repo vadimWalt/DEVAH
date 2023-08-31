@@ -10,6 +10,8 @@ use Illuminate\Validation\Rule;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rules\Password;
+use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -27,20 +29,12 @@ class UserController extends Controller
             'password' => ['required', 'confirmed', Password::min(6)->mixedCase()->numbers()->symbols()],
             'role' => 'required',
             'profile_picture' => ['required', Rule::imageFile()],
-            'city' => 'required',
-            'zip_code' => ['required', 'regex:/^[0-9]{4,}$/'],
-            'street' => ['required', 'regex:/^[A-Za-z0-9\s]+$/'],
-            'country' => 'required',
-            'g-recaptcha-response' => ['required', 'captcha'], // Add the CAPTCHA validation rule
+            // 'g-recaptcha-response' => 'required|captcha', // Add the CAPTCHA validation rule
         ]);
         // make sure the image is here before saving it
         if ($request->hasFile('profile_picture')) {
-            // let's break this down together
+
             $formFields['profile_picture'] = $request->file('profile_picture')->store('images/profilePictures', 'public');
-            // $formFields['logo'] >> this will add a 'logo' key to our array of data from the form
-            // $request->file('logo') >> retrieve the image file that has been uploaded (could be any file really)
-            // store('logos', 'public') > the file will be stored in 
-            // public/logos/ instead of just public/
         }
 
         // hash the password because we're good devs

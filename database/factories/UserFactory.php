@@ -23,10 +23,6 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => bcrypt('password'), // Default password
             'profile_picture' =>  $this->faker->imageUrl(),
-            'city' =>  $this->faker->city,
-            'zip_code' =>  $this->faker->postcode,
-            'street' =>  $this->faker->streetAddress,
-            'country' =>  $this->faker->state,
             'role' =>  $this->faker->randomElement(['teacher', 'student']),
             'remember_token' => Str::random(10),
         ];

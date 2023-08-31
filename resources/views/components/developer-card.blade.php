@@ -166,16 +166,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <img src="{{ asset('/images/dennis.jpg') }}" class="card-img-top" alt="picture">
-                    <div class="card-body">
-                        <h5 class="card-title">Dennis</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Full Stack Web Developer</h6>
-                        <p class="card-text">An adaptable professional with a proven career transformation form logistics to a dynamics and role as a junior dev. I have seamly transitioned to the world of technology. I bring a unique problem solving approach to software  development..</p>
-                    </div>
-                </div>
-            </div>
+            
             <!-- Repeat the above card structure for other developers -->
         </div>
     </div>

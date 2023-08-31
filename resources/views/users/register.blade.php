@@ -55,39 +55,6 @@
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
             </div>
-            {{-- address fields --}}
-            <div class="mb-6">
-                <label for="city" class="inline-block text-lg mb-2">City:</label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="city"
-                    value="{{ old('city') }}" />
-                @error('city')
-                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="mb-6">
-                <label for="zip_code" class="inline-block text-lg mb-2">Zip Code:</label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="zip_code"
-                    value="{{ old('zip_code') }}" />
-                @error('zip_code')
-                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="mb-6">
-                <label for="street" class="inline-block text-lg mb-2">Street:</label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="street"
-                    value="{{ old('street') }}" />
-                @error('street')
-                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="mb-6">
-                <label for="country" class="inline-block text-lg mb-2">Country:</label>
-                <input type="text" class="border border-gray-200 rounded p-2 w-full" name="country"
-                    value="{{ old('country') }}" />
-                @error('country')
-                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                @enderror
-            </div>
 
             {{-- password and password confirmation --}}
             <div class="mb-6">
