@@ -34,7 +34,7 @@
 
     <nav id="nav" class="navbar p-6">
         <div class="logo">
-            <img src="{{ asset('images/favicon.png') }}" alt="">
+            <img src="{{ asset('images/favicon.jpg') }}" alt="">
             <a href="/">DEVAH</a>
         </div>
         <ul id="nav-links" class="nav-links">
