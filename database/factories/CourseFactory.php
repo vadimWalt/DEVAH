@@ -22,7 +22,6 @@ class CourseFactory extends Factory
             'title' => fake()->sentence(),
             'description' => fake()->paragraph(),
             'content' => fake()->paragraphs(3, true),
-            'picture' => fake()->imageUrl(),
         ];
     }
 }

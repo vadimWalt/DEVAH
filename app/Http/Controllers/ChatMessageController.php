@@ -18,7 +18,7 @@ class ChatMessageController extends Controller
     }
 
 
-    public function store(Request $request, $chat_room_id)
+    public function store(Request $request, $chat_rooms_id)
     {
         $formFields = $request->validate([
             'chatMessage' => 'required',
@@ -27,13 +27,13 @@ class ChatMessageController extends Controller
 
         // Add the logged-in user's ID and the chat room ID to the new message
         $formFields['user_id'] = auth()->user()->id;
-        $formFields['chat_room_id'] = $chat_room_id; // Retrieve chat room ID from URL
+        $formFields['chat_rooms_id'] = $chat_rooms_id; // Retrieve chat room ID from URL
 
         // Create the new chat message
         ChatMessage::create($formFields);
 
         // Redirect back to the chat room
-        return redirect()->route('chatmessage.index', ['chat_room_id' => $chat_room_id]);
+        return redirect()->route('chatmessage.index', ['chat_rooms_id' => $chat_rooms_id]);
     }
 
 }

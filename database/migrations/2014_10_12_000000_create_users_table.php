@@ -20,10 +20,6 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string("profile_picture");
-            $table->string("city");
-            $table->string("zip_code");
-            $table->string("street");
-            $table->string("country");
             $table->rememberToken();
             $table->timestamps();
             $table->enum('role', [User::ROLE_TEACHER, User::ROLE_STUDENT]);
